@@ -48,7 +48,7 @@
 #define MSP_DEBUG                254   //out message         debug1,debug2,debug3,debug4
 
 
-void SendToMultiWii(int roll, int pitch, int yaw, int height, int aux1, int aux2);
+void SendToMultiWii(rc_values *values);
 inline void BufSet16(unsigned char *buf, int in);
 
 typedef struct _rc_values
@@ -56,12 +56,12 @@ typedef struct _rc_values
 	int roll;
 	int pitch;
 	int yaw;
-	int height;
 	int throttle;
+	int height;
 	int aux1;
 	int aux2;
 	int aux3;
 	int aux4;
-};
+} rc_values;
 
 #endif /* MULTIWII_DRIVER_H_ */
