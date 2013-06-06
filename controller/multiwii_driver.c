@@ -12,11 +12,11 @@ void SendToMultiWii(rc_values *values)
 	int data_length = 16;
 	char c = 0;
 	unsigned char send_buf[data_length + 6];
-	send_buf[0] = (unsigned char)'S';
+	send_buf[0] = (unsigned char)'$';
 	send_buf[1] = (unsigned char)'M';
 	send_buf[2] = (unsigned char)'<';
-	send_buf[3] = MSP_SET_RAW_RC;
-	send_buf[4] = data_length; // data length
+	send_buf[3] = data_length; // data length
+	send_buf[4] = MSP_SET_RAW_RC;
 
 	BufSet16(&send_buf[5], values.roll);
 	BufSet16(&send_buf[7], values.pitch);
@@ -27,7 +27,7 @@ void SendToMultiWii(rc_values *values)
 	BufSet16(&send_buf[17], values.aux3);
 	BufSet16(&send_buf[19], 1000); // aux4 is reserved for arming the QC
 
-	for(int i = 5; i < 5 + send_buf[4]; i++)
+	for(int i = 3; i < 5 + send_buf[4]; i++)
 	{
 		c ^= send_buf[i];
 	}
@@ -38,8 +38,8 @@ void SendToMultiWii(rc_values *values)
 inline void BufSet16(unsigned char *buf, int in)
 {
 	// LSB in first byte
-	buf[0] = in & 0xFF;
+	buf[0] = (unsigned char)(in & 0xFF);
 	// MSB in second byte
-	buf[1] = (in >> 8) & 0xFF;
+	buf[1] = (unsigned char)((in >> 8) & 0xFF);
 }
 
