@@ -22,6 +22,8 @@
 #include "../config.h"
 #include "line_detection.h"
 
+#define SHOW_WINDOW
+
 using namespace cv;
 using namespace std;
 
@@ -39,13 +41,21 @@ int			serversock, clientsock;
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
+// prototypes
+float calcAngle(Point delta);
+long long getTimeMillis();
+double calculeFrameRate();
+void quit(char* msg, int retval);
+
 int main(int argc, char** argv)
 {
-//		pthread_t 	thread_s;
-	int			key;
+	pthread_t 	thread_s;
+//	int			key;
+#ifdef SHOW_WINDOW
+	cvNamedWindow("Example3", CV_WINDOW_AUTOSIZE);
+#endif
 
-	CvCapture* capture = cvCreateFileCapture(argv[1]);
-
+	capture = cvCreateFileCapture(argv[1]);
 	if (!capture) {
 		quit("cvCapture failed", 1);
 	}
@@ -60,23 +70,28 @@ int main(int argc, char** argv)
 	cvZero(img_shared);
 
 	/* run the streaming server as a separate thread */
-//		if (pthread_create(&thread_s, NULL, streamServer, NULL)) {
-//			quit("pthread_create failed.", 1);
-//		}
+//	if (pthread_create(&thread_s, NULL, streamServer, NULL)) {
+//		quit("pthread_create failed.", 1);
+//	}
 
 	// for text:
-//		char text[50];
-//		int fontFace = FONT_HERSHEY_PLAIN;
-//		double fontScale = 1;
-//		int thickness = 1;
+#if DEBUG_LEVEL <= 1
+	char text[50];
+	int fontFace = FONT_HERSHEY_PLAIN;
+	double fontScale = 1;
+	int thickness = 1;
+#endif
 
 	// for line detection
 	Mat dst, cdst;
 
+	cvNamedWindow("Example3", CV_WINDOW_AUTOSIZE);
+	IplImage* frame;
+	capture = cvCreateFileCapture( argv[1] );
+
 	while(1) {
 		/* get a frame from camera */
 		img_in = cvQueryFrame(capture);
-		if (!img_in) break;
 
 		//gray scale image for edge detection
 		cvCvtColor(img_in, img_pgm, CV_BGR2GRAY);
@@ -88,39 +103,42 @@ int main(int argc, char** argv)
 		//cvtColor(dst, cdst, COLOR_GRAY2BGR); //convert to color to be able to draw color lines
 
 		vector<Vec4i> lines;
-		LineStruct line1;
-		line1.sum = Point(0,0);
-		line1.sum_abs = Point(0,0);
-		line1.n = 0;
-		line1.angle = 0;
+		LineStruct detected_line1;
+		detected_line1.sum = Point(0,0);
+		detected_line1.sum_abs = Point(0,0);
+		detected_line1.n = 0;
+		detected_line1.angle = 0;
 
 		HoughLinesP(dst, lines, 1, CV_PI/180, 50, 10, 20);
-		for( size_t i = 0; i < lines.size(); i++ )
+			// loop through all lines found in image
+		for(size_t i = 0; i < lines.size(); i++)
 		{
 			Vec4i l = lines[i];
-			LineStruct line0;
+			LineStruct line_temp;
 			float angle;
 
-			line0.sum.x += l[2]-l[0];
-			line0.sum.y += l[3]-l[1];
+			line_temp.sum.x = l[2]-l[0]; // delta x
+			line_temp.sum.y = l[3]-l[1]; // delta y
 			// for center
-			line0.sum_abs.x += l[2] + l[0];
-			line0.sum_abs.y += l[3] + l[1];
+			line_temp.sum_abs.x = l[2] + l[0];
+			line_temp.sum_abs.y = l[3] + l[1];
 
 			// if y difference == 0 then processed by calcAngle()
 			// if x difference and y difference == 0 then reject line
-			if((line0.sum.x != 0)&&(line0.sum.y != 0))
+			if((line_temp.sum.x != 0) && (line_temp.sum.y != 0))
 			{
-				angle = calcAngle(line0.sum);
-				line1.sum.x += line0.sum.x;
-				line1.sum.y += line0.sum.y;
-				line1.sum_abs.x += line0.sum_abs.x;
-				line1.sum_abs.y += line0.sum_abs.y;
-				line1.angle += angle;
-				line1.prev_angle = angle;
-				line1.n++;
+				angle = calcAngle(line_temp.sum);
+				detected_line1.sum.x += line_temp.sum.x;
+				detected_line1.sum.y += line_temp.sum.y;
+				detected_line1.sum_abs.x += line_temp.sum_abs.x;
+				detected_line1.sum_abs.y += line_temp.sum_abs.y;
+				detected_line1.angle += angle;
+				detected_line1.prev_angle = angle;
+				detected_line1.n++;
 
+#if DEBUG_LEVEL <= 1
 				line(cdst, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(0,0,255), 3, CV_AA);
+#endif
 			}
 			// else do nothing with this line
 
@@ -131,34 +149,34 @@ int main(int argc, char** argv)
 		CLS();
 #endif
 #if DEBUG_LEVEL <= 1
-		printf("Lines size = %d\n",line1.n);
+		printf("Lines size = %d\n",detected_line1.n);
 #endif
 
-		if(line1.n>0)
+		if(detected_line1.n>0)
 		{
-			line1.av_sum.x = (int)(line1.sum.x/line1.n);
-			line1.av_sum.y  = (int)(line1.sum.y/line1.n);
-			line1.av_abs.x = (int)(line1.sum_abs.x/(2*line1.n));
-			line1.av_abs.y = (int)(line1.sum_abs.y/(2*line1.n));
-			line1.av_angle = (line1.angle/line1.n);
+			detected_line1.av_sum.x = (int)(detected_line1.sum.x/detected_line1.n);
+			detected_line1.av_sum.y  = (int)(detected_line1.sum.y/detected_line1.n);
+			detected_line1.av_abs.x = (int)(detected_line1.sum_abs.x/(2*detected_line1.n));
+			detected_line1.av_abs.y = (int)(detected_line1.sum_abs.y/(2*detected_line1.n));
+			detected_line1.av_angle = (detected_line1.angle/detected_line1.n);
 
 			printf("Start = (%d,%d)\nEnd = (%d,%d)\n"
-					"av_abs = (%d,%d)\nav_sum = (%d,%d)\nAngle = %.3f degree\n",
-					line1.av_abs.x, line1.av_abs.y, Point(line1.av_abs + line1.av_sum).x, Point(line1.av_abs + line1.av_sum).y,
-					line1.av_abs.x, line1.av_abs.y, line1.av_sum.x, line1.av_sum.y, line1.av_angle*180/CV_PI);
+				"av_abs = (%d,%d)\nav_sum = (%d,%d)\nAngle = %.3f degree\n",
+				detected_line1.av_abs.x, detected_line1.av_abs.y, Point(detected_line1.av_abs + detected_line1.av_sum).x, Point(detected_line1.av_abs + detected_line1.av_sum).y,
+				detected_line1.av_abs.x, detected_line1.av_abs.y, detected_line1.av_sum.x, detected_line1.av_sum.y, detected_line1.av_angle*180/CV_PI);
 
 #if DEBUG_LEVEL <= 1
 			// print text to the image
-			sprintf(text, "Angle = %.3f", line1.av_angle*180/CV_PI);
+			sprintf(text, "Angle = %.3f", detected_line1.av_angle*180/CV_PI);
 			Point textOrg1(20,20);
 			putText(cdst, text, textOrg1, fontFace, fontScale,Scalar(0,255,0), thickness, 8);
 			//draw average vector
-			line( cdst, line1.av_abs, line1.av_abs + line1.av_sum,Scalar(255,0,0), 3, CV_AA);
+			line( cdst, detected_line1.av_abs, detected_line1.av_abs + detected_line1.av_sum,Scalar(255,0,0), 3, CV_AA);
 			//draw reference line
 			line( cdst, Point(size.width/2,0), Point(size.width/2,size.height),Scalar(255,255,255), 2, CV_AA);
 			// calculate deviation from centre
 #endif
-			float distance_average = line1.av_abs.x;
+			float distance_average = detected_line1.av_abs.x;
 			float centre = size.width/2;
 			float deviation = centre - distance_average;
 			float deviation_normalized = (deviation/size.width) * 100;
@@ -166,7 +184,6 @@ int main(int argc, char** argv)
 #if DEBUG_LEVEL <= 1
 			printf("Distance average = %.3f\nCentre = %.3f\nDeviation = %.3f = %.3f [percent]\n",
 				 distance_average, centre, deviation, deviation_normalized);
-#endif
 
 			// print two dots to the image
 			 Point circle_center;
@@ -177,31 +194,37 @@ int main(int argc, char** argv)
 			 circle( cdst, circle_center, 4, Scalar(255,255,255), -1, 8, 0 );
 			 // indicate calculated line center
 			 circle_center.x = distance_average;
-			 circle_center.y = line1.av_abs.y;
+			 circle_center.y = detected_line1.av_abs.y;
 			 //make dot green
 			 circle( cdst, circle_center, 4, Scalar(0,255,0), -1, 8, 0 );
+#endif
 		}
 		else
 		{
 #if DEBUG_LEVEL <= 1
 			sprintf(text, "No line detected");
 			Point textOrg1(20,20);
-			putText(cdst, text, textOrg1, fontFace, fontScale,Scalar(0,0,255), thickness, 8);
+			putText(cdst, text, textOrg1, fontFace, fontScale, Scalar(0,0,255), thickness, 8);
 #endif
 		}
 
 
-		pthread_mutex_lock(&mutex);
-		img_shared->imageData = (char *)cdst.data;
-		is_data_ready = 1;
-		/* also display the video here on server */
-		//cvShowImage("stream_server", img_shared);
-		int img_shared_size = img_shared->imageSize;
-		pthread_mutex_unlock(&mutex);
-
 		/* print the width and height of the frame, needed by the client */
 #if DEBUG_LEVEL <= 1
+		//pthread_mutex_lock(&mutex);
+		img_shared->imageData = (char *)cdst.data;
+		//is_data_ready = 1;
+		/* also display the video here on server */
+#ifdef SHOW_WINDOW
+		cvShowImage("Test", img_shared);
+#endif
+		int img_shared_size = img_shared->imageSize;
+		//pthread_mutex_unlock(&mutex);
+
 		fprintf(stdout, "width:  %d\nheight: %d\nsize: %d\n", img_in->width, img_in->height, img_shared_size);
+#endif
+#if PLATFORM == PLATFORM_x86
+		cvWaitKey(33);
 #endif
 	}
 		/* user has pressed 'q', terminate the streaming server */
@@ -210,8 +233,7 @@ int main(int argc, char** argv)
 //	}
 
 	/* free memory */
-
-	cvDestroyWindow("stream_server");
+	destroyAllWindows();
 	quit(NULL, 0);
 }
 
@@ -308,8 +330,8 @@ void quit(char* msg, int retval)
 		fprintf(stderr, "\n");
 	}
 
-//	if (clientsock) close(clientsock);
-//	if (serversock) close(serversock);
+	if (clientsock) close(clientsock);
+	if (serversock) close(serversock);
 	if (capture) cvReleaseCapture(&capture);
 	if (img_shared) cvReleaseImage(&img_shared);
 	if (img_in) cvReleaseImage(&img_in);
