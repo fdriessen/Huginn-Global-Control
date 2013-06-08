@@ -9,10 +9,10 @@
 #define LINE_DETECTION_H_
 
 typedef struct {
-	cv::Point sum;
-	cv::Point sum_abs;
-	cv::Point av_sum;
-	cv::Point av_abs;
+	Point sum;
+	Point sum_abs;
+	Point av_sum;
+	Point av_abs;
 	float angle;
 	float av_angle;
 	float prev_angle;
@@ -21,5 +21,14 @@ typedef struct {
 
 #define CLS() 	printf("\033[H\033[2J"); \
                     fflush(stdout)
+
+#define ANGLE_THRESHOLD		0.523598776f // rad = 30 deg
+
+// prototypes
+float calcAngle(Point delta);
+long long getTimeMillis();
+double calculeFrameRate();
+void quit(char* msg, int retval);
+bool belongs_to_line(float vector_angle, float line_angle, float margin);
 
 #endif /* LINE_DETECTION_H_ */
