@@ -11,7 +11,7 @@
 #include <iostream>
 
 // CV includes
-#include <cv.h>
+#include <opencv/cv.h>
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
@@ -113,6 +113,7 @@ int main(int argc, char** argv)
 				line_temp.sum_abs.y = l[3] + l[1];
 
 				float angle = calcAngle(line_temp.sum);
+				printf("%f angle of line %d \n", angle, i);
 
 				LineStruct *dest_line;
 
@@ -147,7 +148,6 @@ int main(int argc, char** argv)
 
 			// clear screen
 #if DEBUG_LEVEL <= 1
-			CLS();
 			printf("Line1 size = %d\n",detected_line1.n);
 			printf("Line2 size = %d\n",detected_line2.n);
 #endif
