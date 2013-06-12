@@ -14,6 +14,7 @@
 #include <opencv/cv.h>
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#include <opencv2/features2d/features2d.hpp>
 
 using namespace cv;
 using namespace std;
@@ -75,6 +76,9 @@ int main(int argc, char** argv)
 		if(key == 27)
 		{
 #endif
+#if DEBUG_LEVEL <= 1
+			printf("\n\n\n\n\n\n\n\n\n\n");
+#endif
 			/* get a frame from camera */
 			img_in = cvQueryFrame(capture);
 
@@ -82,7 +86,7 @@ int main(int argc, char** argv)
 			cvCvtColor(img_in, img_pgm, CV_BGR2GRAY);
 			Mat src = img_pgm;
 			// make edges smoother
-			GaussianBlur(src,src,Size(5,5),0);
+			//medianBlur(src,src, 3);
 			Canny(src, dst, 50, 200, 3); //GRAY output format
 			cdst = img_in;
 			//cvtColor(dst, cdst, COLOR_GRAY2BGR); //convert to color to be able to draw color lines
@@ -99,8 +103,8 @@ int main(int argc, char** argv)
 			detected_line2.n = 0;
 			detected_line2.angle = 0;
 
-			HoughLinesP(dst, lines, 1, CV_PI/180, 50, 10, 20);
-				// loop through all lines found in image
+			HoughLinesP(dst, lines, 1, CV_PI/180, 50, 10, 10);
+			// loop through all lines found in image
 			for(size_t i = 0; i < lines.size(); i++)
 			{
 				Vec4i l = lines[i];
@@ -112,8 +116,18 @@ int main(int argc, char** argv)
 				line_temp.sum_abs.x = l[2] + l[0];
 				line_temp.sum_abs.y = l[3] + l[1];
 
+				if(line_temp.sum.y < 0)
+				{
+					line_temp.sum_lh.x = -line_temp.sum.x;
+					line_temp.sum_lh.y = -line_temp.sum.y;
+				}
+				else
+				{
+					line_temp.sum_lh.x = line_temp.sum.x;
+					line_temp.sum_lh.y = line_temp.sum.y;
+				}
+
 				float angle = calcAngle(line_temp.sum);
-				printf("%f angle of line %d \n", angle, i);
 
 				LineStruct *dest_line;
 
@@ -122,7 +136,7 @@ int main(int argc, char** argv)
 					dest_line = &detected_line1;
 				else if(belongs_to_line(angle, detected_line1.angle, ANGLE_THRESHOLD))
 					dest_line = &detected_line1;
-				// if line1 isn't empty and it doesn't belong to line1 add it to line 2
+				// if line2 is empty and it doesn't belong to line1 add it to line 2
 				else if(detected_line2.n == 0)
 					dest_line = &detected_line2;
 				else if(belongs_to_line(angle, detected_line2.angle, ANGLE_THRESHOLD))
@@ -136,11 +150,28 @@ int main(int argc, char** argv)
 					dest_line->sum.y += line_temp.sum.y;
 					dest_line->sum_abs.x += line_temp.sum_abs.x;
 					dest_line->sum_abs.y += line_temp.sum_abs.y;
-					dest_line->angle += angle/(detected_line1.n + 1);
+					dest_line->sum_lh.x += line_temp.sum_lh.x;
+					dest_line->sum_lh.y += line_temp.sum_lh.y;
+
+					dest_line->angle = calcAngle(dest_line->sum_lh);
 					dest_line->n++;
 
 #if DEBUG_LEVEL <= 1
-					line(cdst, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(0,0,255), 3, CV_AA);
+					int current_line = 1;
+					if(dest_line == &detected_line2)
+						current_line = 2;
+
+					printf("vector %d angle = %f\n", i, angle);
+					printf("vector %d pos = s(%d,%d) e(%d,%d)\n", i, l[0], l[1], l[2], l[3]);
+					printf("angle line %d = %f\n", current_line, dest_line->angle);
+
+					sprintf(text, "%d", i);
+					putText(cdst, text, Point(l[0], l[1]), fontFace, fontScale,Scalar(0,0,0), thickness, 8);
+
+					if(current_line == 2)
+						line(cdst, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(0,255,255), 3, CV_AA);
+					else
+						line(cdst, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(0,0,255), 3, CV_AA);
 #endif
 				}
 
@@ -160,12 +191,12 @@ int main(int argc, char** argv)
 				detected_line1.av_abs.y = (int)(detected_line1.sum_abs.y/(2*detected_line1.n));
 				detected_line1.av_angle = detected_line1.angle;
 
+#if DEBUG_LEVEL <= 1 && 0
 				printf("Start = (%d,%d)\nEnd = (%d,%d)\n"
 					"av_abs = (%d,%d)\nav_sum = (%d,%d)\nAngle = %.3f degree\n",
 					detected_line1.av_abs.x, detected_line1.av_abs.y, Point(detected_line1.av_abs + detected_line1.av_sum).x, Point(detected_line1.av_abs + detected_line1.av_sum).y,
 					detected_line1.av_abs.x, detected_line1.av_abs.y, detected_line1.av_sum.x, detected_line1.av_sum.y, detected_line1.av_angle*180/CV_PI);
 
-#if DEBUG_LEVEL <= 1
 				// print text to the image
 				sprintf(text, "Angle = %.3f", detected_line1.av_angle*180/CV_PI);
 				Point textOrg1(20,20);
@@ -181,7 +212,7 @@ int main(int argc, char** argv)
 				float deviation = centre - distance_average;
 				float deviation_normalized = (deviation/size.width) * 100;
 
-#if DEBUG_LEVEL <= 1
+#if DEBUG_LEVEL <= 1 && 0
 				printf("Distance average = %.3f\nCentre = %.3f\nDeviation = %.3f = %.3f [percent]\n",
 					 distance_average, centre, deviation, deviation_normalized);
 

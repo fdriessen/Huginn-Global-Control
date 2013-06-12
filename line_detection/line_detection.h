@@ -15,7 +15,7 @@ typedef struct {
 	Point av_abs;
 	float angle;
 	float av_angle;
-	float prev_angle;
+	Point sum_lh;
 	int n;
 } LineStruct;
 
