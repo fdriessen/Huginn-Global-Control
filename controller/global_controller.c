@@ -22,7 +22,8 @@ const char *serial_port = "/dev/ttyUSB1";
 
 int ui()
 {
-
+	
+	return 0;
 }
 
 int main(int argc, char **argv)

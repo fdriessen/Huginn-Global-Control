@@ -3,7 +3,7 @@ CFLAGS=-c -g -Wextra -Wall
 LIBS=-lpthread
 LIBINC=-L/usr/local/lib
 SOURCES=global_controller.c multiwii_driver.c serial.c
-OBJECTS=$(SOURCES:.cpp=.o)
+OBJECTS=$(SOURCES:.c=.o)
 TARGET=controller
 OPT=-O0
 
@@ -15,7 +15,7 @@ debug: $(TARGET)
 $(TARGET): $(OBJECTS) 
 	$(CC) $(LIBINC) -o $@ $(OBJECTS) $(LIBS)
 
-.cpp.o:
+.o:
 	$(CC) $(OPT) $(CFLAGS) $< -o $@
 
 clean:
