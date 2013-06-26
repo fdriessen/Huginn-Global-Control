@@ -9,15 +9,37 @@
 #define LINE_DETECTION_H_
 
 typedef struct {
-	Point sum;
-	Point sum_abs;
-	Point av_sum;
-	Point av_abs;
-	float angle;
-	float av_angle;
-	Point sum_lh;
 	int n;
+	Point vector;
+	Point location;
+	float angle;
+	Point vector_lh;
 } LineStruct;
+
+enum LineDetectedPoint{
+	ld_none = 0,
+	ld_plus_close = 1 << 0,
+	ld_minus_close = 1 << 1,
+	ld_plus_far = 1 << 2,
+	ld_minus_far = 1 << 3,
+	ld_plus = 1 << 0 | 1 << 2,
+	ld_minus = 1 << 1 | 1 << 3,
+	ld_close = 1 << 0 | 1 << 1,
+	ld_far = 1 << 2 | 1 << 3,
+	ld_all = 1 << 0 | 1 << 1 | 1 << 2 | 1 << 3
+};
+
+enum LineElement {
+	le_cross = 1,
+	le_corner_left,
+	le_corner_right,
+	le_corner_left_taken,
+	le_corner_right_taken,
+	le_end,
+	le_begin,
+	le_none,
+	le_unknown
+};
 
 #define CLS() 	printf("\033[H\033[2J"); \
                     fflush(stdout)
