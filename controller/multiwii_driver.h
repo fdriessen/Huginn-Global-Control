@@ -47,11 +47,26 @@
 #define MSP_DEBUGMSG             253   //out message         debug string buffer
 #define MSP_DEBUG                254   //out message         debug1,debug2,debug3,debug4
 
+typedef struct {
+	int acc_x;
+	int acc_y;
+	int acc_z;
+	int gyro_roll;
+	int gyro_pitch;
+	int gyro_yaw;
+	int mag_roll;
+	int mag_pitch;
+	int mag_yaw;
+} sensor_data;
 
-void SendToMultiWii(rc_values *values);
-inline void BufSet16(unsigned char *buf, int in);
+typedef struct {
+	int fl;
+	int fr;
+	int bl;
+	int br;
+} motor_data;
 
-typedef struct _rc_values
+typedef struct
 {
 	int roll;
 	int pitch;
@@ -63,5 +78,11 @@ typedef struct _rc_values
 	int aux3;
 	int aux4;
 } rc_values;
+
+int GetMotorMW(int fd, motor_data *md);
+int GetSensorMW(int fd, sensor_data *sd);
+void SetRcMW(int fd, rc_values *values);
+inline void B16ToBuf(unsigned char *buf, int in);
+inline short BufToB16(unsigned char *buf);
 
 #endif /* MULTIWII_DRIVER_H_ */

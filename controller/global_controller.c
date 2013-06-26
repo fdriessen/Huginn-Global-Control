@@ -6,37 +6,72 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 #include "../common.h"
 #include "../config.h"
 #include "global_controller.h"
 #include "multiwii_driver.h"
+#include "serial.h"
 
-void main(int argc, char **argv)
+const char *serial_port = "/dev/ttyUSB1";
+
+int ui()
 {
+
+}
+
+int main(int argc, char **argv)
+{
+	int fd_ser = open(serial_port, O_RDWR | O_NOCTTY | O_SYNC);
+	if (fd_ser < 0)
+	{
+		printf("ERROR opening %s", serial_port);
+		return -1;
+	}
+
+	set_interface_attribs(fd_ser, B115200, 0);	// set speed to 115,200 bps, 8n1 (no parity)
+	set_blocking(fd_ser, 1);	// set blocking
+	
 	while(true)
 	{
 		ld_information ld;
 		rc_values rc;
+		motor_data md;
+		sensor_data sd;
+		
+		// get multiwii data
+		if(GetSensorMW(fd_ser, &sd) < 0)
+			printf("ERROR: GetSensorMW");
+		if(GetMotorMW(fd_ser, &md) < 0)
+			printf("ERROR: GetMotorMW");
 
 		WaitForNewFrame(&ld);
-		memset(&rc, sizeof(rc_values), 0);
+		memset(&rc, sizeof(rc), 0);
+		printf("info: mode = %d", ld.mode);
+		printf("%30s: %4d, %4d, %4d", "RC (roll, pitch, yaw)\n", rc.roll, rc.pitch, rc.yaw);
+		printf("%30s: %4d, %4d, %4d, %4d", "Motor (fl, fr, bl, br)\n", md.fl, md.fr, md.bl, md.br);
+		printf("%30s: %4d, %4d, %4d, %4d, %4d, %4d, %4d, %4d, %4d", "Sensor (acc(xyz), gyro(rpy), mag(rpy))\n", sd.acc_x, sd.acc_y, sd.acc_z, sd.gyro_roll, sd.gyro_pitch, sd.gyro_yaw, sd.mag_roll, sd.mag_pitch, sd.mag_yaw);
+		continue;
 
 		switch(ld.mode)
 		{
 			case MODE_LINE_FOLLOW:
-				if(ld.data.follow_info.angle_sp - ld.data.follow_info.angle_cv < FOLLOW_ANGLE_THRESHOLD)
+				if(ld.data.follow.angle_sp - ld.data.follow.angle_cv < FOLLOW_ANGLE_THRESHOLD)
 					rc.yaw = YAW_RIGHT;
-				else if(ld.data.follow_info.angle_sp - ld.data.follow_info.angle_cv > FOLLOW_ANGLE_THRESHOLD)
+				else if(ld.data.follow.angle_sp - ld.data.follow.angle_cv > FOLLOW_ANGLE_THRESHOLD)
 					rc.yaw = YAW_LEFT;
 				else
 					rc.yaw = YAW_NEUTRAL;
 
 
-				if(ld.data.follow_info.x_sp - ld.data.follow_info.x_cv < -FOLLOW_X_THRESHOLD)
+				if(ld.data.follow.x_sp - ld.data.follow.x_cv < -FOLLOW_X_THRESHOLD)
 					rc.roll = ROLL_LEFT;
-				else if(ld.data.follow_info.x_sp - ld.data.follow_info.x_cv > FOLLOW_X_THRESHOLD)
+				else if(ld.data.follow.x_sp - ld.data.follow.x_cv > FOLLOW_X_THRESHOLD)
 					rc.yaw = ROLL_RIGHT;
 				else
 					rc.yaw = ROLL_NEUTRAL;
@@ -46,39 +81,39 @@ void main(int argc, char **argv)
 				break;
 
 			case MODE_LINE_HOVER:
-				if(ld.data.hover_info.x_sp - ld.data.hover_info.x_cv < -HOVER_X_THRESHOLD)
+				if(ld.data.hover.x_sp - ld.data.hover.x_cv < -HOVER_X_THRESHOLD)
 					rc.roll = ROLL_LEFT;
-				else if(ld.data.hover_info.x_sp - ld.data.hover_info.x_cv > HOVER_X_THRESHOLD)
+				else if(ld.data.hover.x_sp - ld.data.hover.x_cv > HOVER_X_THRESHOLD)
 					rc.roll = ROLL_RIGHT;
 				else
 					rc.roll = ROLL_NEUTRAL;
 
-				if(ld.data.hover_info.y_sp - ld.data.hover_info.y_cv < -HOVER_Y_THRESHOLD)
+				if(ld.data.hover.y_sp - ld.data.hover.y_cv < -HOVER_Y_THRESHOLD)
 					rc.pitch = PITCH_BACKWARD;
-				else if(ld.data.hover_info.y_sp - ld.data.hover_info.y_cv > HOVER_Y_THRESHOLD)
+				else if(ld.data.hover.y_sp - ld.data.hover.y_cv > HOVER_Y_THRESHOLD)
 					rc.pitch = PITCH_FORWARD;
 				else
 					rc.pitch = PITCH_NEUTRAL;
 
-				if(ld.data.hover_info.angle_sp - ld.data.hover_info.angle_cv < HOVER_ANGLE_THRESHOLD)
+				if(ld.data.hover.angle_sp - ld.data.hover.angle_cv < HOVER_ANGLE_THRESHOLD)
 					rc.yaw = YAW_RIGHT;
-				else if(ld.data.hover_info.angle_sp - ld.data.hover_info.angle_cv > HOVER_ANGLE_THRESHOLD)
+				else if(ld.data.hover.angle_sp - ld.data.hover.angle_cv > HOVER_ANGLE_THRESHOLD)
 					rc.yaw = YAW_LEFT;
 				else
 					rc.yaw = YAW_NEUTRAL;
 			break;
 
 			case MODE_LINE_ROTATE:
-				if(ld.data.rotate_info.x_sp - ld.data.rotate_info.x_cv < -ROTATE_X_THRESHOLD)
+				if(ld.data.rotate.x_sp - ld.data.rotate.x_cv < -ROTATE_X_THRESHOLD)
 					rc.roll = ROLL_LEFT;
-				else if(ld.data.rotate_info.x_sp - ld.data.rotate_info.x_cv > ROTATE_X_THRESHOLD)
+				else if(ld.data.rotate.x_sp - ld.data.rotate.x_cv > ROTATE_X_THRESHOLD)
 					rc.roll = ROLL_RIGHT;
 				else
 					rc.roll = ROLL_NEUTRAL;
 
-				if(ld.data.rotate_info.y_sp - ld.data.rotate_info.y_cv < -ROTATE_Y_THRESHOLD)
+				if(ld.data.rotate.y_sp - ld.data.rotate.y_cv < -ROTATE_Y_THRESHOLD)
 					rc.pitch = PITCH_BACKWARD;
-				else if(ld.data.rotate_info.y_sp - ld.data.rotate_info.y_cv > ROTATE_Y_THRESHOLD)
+				else if(ld.data.rotate.y_sp - ld.data.rotate.y_cv > ROTATE_Y_THRESHOLD)
 					rc.pitch = PITCH_FORWARD;
 				else
 					rc.pitch = PITCH_NEUTRAL;
@@ -87,25 +122,26 @@ void main(int argc, char **argv)
 			break;
 		}
 
-		SendToMultiWii(&rc);
+		SetRcMW(fd_ser, &rc);
 	}
+	
+	return 0;
 }
 
 void WaitForNewFrame(ld_information *info)
 {
-	FILE *fp;
-
-	if((fp = fopen(LINE_DETECT_FIFO, "r")) == NULL)
+	int fdfifo;
+	
+	/* open, read, and display the message from the FIFO */
+	if((fdfifo = open(LINE_DETECT_FIFO, O_RDONLY)) < 0)
 	{
-		perror("fopen");
+		perror("fopen ldfifo");
 		exit(1);
 	}
-
-	fgets(info, sizeof(ld_information), fp);
-#ifdef DEBUG
-	printf("Line Detect: new frame");
-#endif
-	fclose(fp);
+	
+	read(fdfifo, info, sizeof(ld_information));
+	//printf("bytes Received: %s\n", buf);
+	close(fdfifo);
 
 	return;
 }
