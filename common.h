@@ -16,10 +16,10 @@
 #define	MODE_LINE_HOVER		2
 #define	MODE_LINE_ROTATE	3
 
-#define LINE_DETECT_FIFO	"LDFIFO"
-#define ANTI_DRIFT_FIFO		"ADFIFO"
+#define LINE_DETECT_FIFO	"/tmp/LDFIFO"
+#define ANTI_DRIFT_FIFO		"/tmp/ADFIFO"
 
-typedef struct _ld_follow_info
+typedef struct
 {
 	float	angle_sp;
 	float	angle_cv;
@@ -27,7 +27,7 @@ typedef struct _ld_follow_info
 	int		x_cv;
 } ld_follow_info;
 
-typedef struct _ld_hover_info
+typedef struct
 {
 	float	angle_sp;
 	float	angle_cv;
@@ -37,7 +37,7 @@ typedef struct _ld_hover_info
 	int		y_cv;
 } ld_hover_info;
 
-typedef struct _ld_rotate_info
+typedef struct
 {
 	int		x_sp;
 	int		x_cv;
@@ -45,14 +45,14 @@ typedef struct _ld_rotate_info
 	int		y_cv;
 } ld_rotate_info;
 
-typedef struct _ld_information
+typedef struct
 {
 	int mode;
 	union
 	{
-		ld_follow_info follow_info;
-		ld_hover_info hover_info;
-		ld_rotate_info rotate_info;
+		ld_follow_info follow;
+		ld_hover_info hover;
+		ld_rotate_info rotate;
 	} data;
 } ld_information;
 
