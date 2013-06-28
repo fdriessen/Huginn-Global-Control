@@ -28,14 +28,9 @@ using namespace std;
 #include "../config.h"
 #include "line_detection.h"
 
-#define SHOW_WINDOW
-
 long long debut_mesure;
 long long fin_mesure;
 
-CvCapture*	capture;
-IplImage*	img_in;
-IplImage*	img_pgm;
 IplImage*	img_shared;
 
 int VectorsToLines(const vector<Vec4i>& vectors, LineStruct* line0, LineStruct* line1)
@@ -109,7 +104,7 @@ int VectorsToLines(const vector<Vec4i>& vectors, LineStruct* line0, LineStruct* 
 			printf("vector %d angle = %f\n", i, angle);
 			printf("vector %d pos = s(%d,%d) e(%d,%d)\n", i, l[0], l[1], l[2], l[3]);
 			printf("angle line %d = %f\n", current_line, dest_line->angle);
-
+#if PLATFORM == PLATFORM_x86	
 			sprintf(text, "%d", i);
 			putText(cdst, text, Point(l[0], l[1]), fontFace, fontScale,Scalar(0,0,0), thickness, 8);
 
@@ -117,6 +112,7 @@ int VectorsToLines(const vector<Vec4i>& vectors, LineStruct* line0, LineStruct* 
 				line(cdst, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(0,255,255), 3, CV_AA);
 			else
 				line(cdst, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(0,0,255), 3, CV_AA);
+#endif
 #endif
 		}
 
@@ -141,6 +137,7 @@ int VectorsToLines(const vector<Vec4i>& vectors, LineStruct* line0, LineStruct* 
 			line0->av_abs.x, line0->av_abs.y, Point(line0->av_abs + line0->av_sum).x, Point(line0->av_abs + line0->av_sum).y,
 			line0->av_abs.x, line0->av_abs.y, line0->av_sum.x, line0->av_sum.y, line0->av_angle*180/CV_PI);
 
+#if PLATFORM == PLATFORM_x86	
 		// print text to the image
 		sprintf(text, "Angle = %.3f", line0->av_angle*180/CV_PI);
 		Point textOrg1(20,20);
@@ -149,6 +146,7 @@ int VectorsToLines(const vector<Vec4i>& vectors, LineStruct* line0, LineStruct* 
 		line( cdst, line0->av_abs, line0->av_abs + line0->av_sum,Scalar(255,0,0), 3, CV_AA);
 		//draw reference line
 		line( cdst, Point(size.width/2,0), Point(size.width/2,size.height),Scalar(255,255,255), 2, CV_AA);
+#endif
 		// calculate deviation from centre
 #endif
 		// float distance_average = line0->av_abs.x;
@@ -159,7 +157,7 @@ int VectorsToLines(const vector<Vec4i>& vectors, LineStruct* line0, LineStruct* 
 #if DEBUG_LEVEL <= 1 && 0
 		printf("Distance average = %.3f\nCentre = %.3f\nDeviation = %.3f = %.3f [percent]\n",
 			 distance_average, centre, deviation, deviation_normalized);
-
+#if PLATFORM == PLATFORM_x86	
 		// print two dots to the image
 		 Point circle_center;
 		 // indicate center:
@@ -172,6 +170,7 @@ int VectorsToLines(const vector<Vec4i>& vectors, LineStruct* line0, LineStruct* 
 		 circle_center.y = line0->av_abs.y;
 		 //make dot green
 		 circle( cdst, circle_center, 4, Scalar(0,255,0), -1, 8, 0 );
+#endif
 #endif
 	}
 	
@@ -252,9 +251,9 @@ LineDetectedPoint DetectLinePresence(Mat &bw, const float angle, const Point cro
 			//printf("ext pres {x,y,i} = {%d,%d,%d}\n",p.x,p.y,i);
 			continue;
 		}
-
+#if PLATFORM == PLATFORM_x86	
 		rectangle(bw, cvRect(p.x-sq_size/2, p.y-sq_size/2, sq_size, sq_size), Scalar(255,255,255));
-
+#endif
 		rect_roi = bw(cvRect(p.x-sq_size/2, p.y-sq_size/2, sq_size, sq_size));
 		mean_roi = mean(rect_roi)[0];
 		if(mean_roi > threshold)
@@ -270,31 +269,37 @@ int main(int argc, char** argv)
 #ifdef SHOW_WINDOW
 	cvNamedWindow("Example3", CV_WINDOW_AUTOSIZE);
 #endif
-
+	
 	/* create the FIFO (named pipe) */
 	mkfifo(LINE_DETECT_FIFO, 0666);
 
-	capture = cvCreateFileCapture(argv[1]);
+#if PLATFORM == PLATFORM_x86	
+	CvCapture* capture = cvCreateFileCapture(argv[1]);
+	printf("Input type = video\n\r");
+#else
+	CvCapture* capture = cvCreateCameraCapture(-1);
+	printf("Input type = webcam\n\r");
+#endif
 	if (!capture) {
 		quit("cvCapture failed", 1);
 	}
 
-	img_in = cvQueryFrame(capture);
-	img_pgm = cvCreateImage(cvGetSize(img_in), IPL_DEPTH_8U, 1); //gray
+#ifdef	WEBCAM_RESIZE
+	IplImage* img_interm = cvQueryFrame(capture);
+	IplImage* img_in = cvCreateImage(cvSize( img_interm->width / 2, img_interm->height / 2 ), img_interm->depth, img_interm->nChannels );
+	printf("Webcam is resized to %d x %d\n\r",(int)(img_interm->width/2),(int)(img_interm->height/2));
+#else
+	IplImage* img_in = cvQueryFrame(capture);
+#endif
+	IplImage* img_pgm = cvCreateImage(cvGetSize(img_in), IPL_DEPTH_8U, 1); //gray
 	img_shared = cvCreateImage(cvGetSize(img_in), IPL_DEPTH_8U, 3); //color
-
-	CvSize size = cvSize((int)cvGetCaptureProperty(capture, CV_CAP_PROP_FRAME_WIDTH), (int)cvGetCaptureProperty(capture, CV_CAP_PROP_FRAME_HEIGHT));
-
+	 CvSize size = cvGetSize(img_in);
+	
 	cvZero(img_pgm);
 	cvZero(img_shared);
 
-	/* run the streaming server as a separate thread */
-//	if (pthread_create(&thread_s, NULL, streamServer, NULL)) {
-//		quit("pthread_create failed.", 1);
-//	}
-
 	// for text:
-#if DEBUG_LEVEL <= 1
+#if (DEBUG_LEVEL <= 1) && (PLATFORM == PLATFORM_x86)
 	char text[50];
 	int fontFace = FONT_HERSHEY_PLAIN;
 	double fontScale = 1;
@@ -305,7 +310,7 @@ int main(int argc, char** argv)
 	Mat dst, cdst;
 
 	while(1) {
-#if PLATFORM == PLATFORM_x86
+#ifdef SHOW_WINDOW
 		if(key == 27)
 		{
 #endif
@@ -313,13 +318,19 @@ int main(int argc, char** argv)
 			printf("\n\n");
 #endif
 			/* get a frame from camera */
+#ifdef WEBCAM_RESIZE
+			img_interm = cvQueryFrame(capture);
+			cvResize((CvArr*)img_interm, (CvArr*)img_in, INTER_LINEAR);
+#else
 			img_in = cvQueryFrame(capture);
-
+#endif
+			
 			//gray scale image for edge detection
 			cvCvtColor(img_in, img_pgm, CV_BGR2GRAY);
 			Mat src = img_pgm;
 			// make edges smoother
-			medianBlur(src,src, 3);
+			//medianBlur(src,src, 3); //uneven and larger than 1
+			medianBlur(src,src, 5);
 			Canny(src, dst, 50, 100, 3); //GRAY output format
 			cdst = img_in;
 			//cvtColor(dst, cdst, COLOR_GRAY2BGR); //convert to color to be able to draw color lines
@@ -342,7 +353,8 @@ int main(int argc, char** argv)
 				// else nothing to do
 			}
 			
-			Mat bw = src > 230;
+			//Mat bw = src > 230;
+			Mat bw = src > 200;
 			//threshold(src, bw, 0, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
 			
 			int sq_size = 50;
@@ -435,25 +447,27 @@ int main(int argc, char** argv)
 			{
 				// no lines found
 			}
-			
+
 			// send control info to controller
 			int fd;
-			fd = open(LINE_DETECT_FIFO, O_WRONLY);
+			fd = open(LINE_DETECT_FIFO, O_WRONLY | O_NONBLOCK);
 			write(fd, &ld_info, sizeof(ld_information));
 			close(fd);
-
+			
 #if DEBUG_LEVEL <= 1
 			char le_strings[][50] = {"le_cross","le_corner_left","le_corner_right","le_corner_left_taken","le_corner_right_taken","le_end","le_begin","le_none","le_unknown"};
 			
 			printf("line_element = %s\n", le_strings[line_element-1]);
 			printf("value line0detected mean = %x\n", line0detected);
 			printf("value line1detected mean = %x\n", line1detected);
-			//rectangle(bw, cvRect(50, 50, 10, 100), Scalar(255,255,255));
 		
 			// printf("(x,y)_0 = (%d,%d), (dx,dy)_0 = (%d,%d)\n", lines[0].location.x, lines[0].location.y, lines[0].vector.x, lines[0].vector.y);
 			// printf("(x,y)_1 = (%d,%d), (dx,dy)_1 = (%d,%d)\n", lines[1].location.x, lines[1].location.y, lines[1].vector.x, lines[1].vector.y);
 			// printf("a0=%f, b0=%f, a1=%f, b1=%f\n", a0, b0, a1, b1);
 			// printf("cross (x,y) = (%d,%d)\n", cross.x, cross.y);
+			
+#if PLATFORM == PLATFORM_x86
+			//rectangle(bw, cvRect(50, 50, 10, 100), Scalar(255,255,255));
 			circle(cdst, crossing, 4, Scalar(0,0,255), -1, 8, 0 );
 
 			line(cdst, lines[0].location, lines[0].location + lines[0].vector ,Scalar(255,0,0), 3, CV_AA);
@@ -462,22 +476,26 @@ int main(int argc, char** argv)
 			//cvFlip(img_shared, img_shared, 1);
 			//cvShowImage("Example3", img_shared);
 			imshow("Example3", bw);
-			
+#endif
 			printf("%s \nangle=%f\nn=%d\n", "line0", lines[0].angle, lines[0].n);
 			printf("%s \nangle=%f\nn=%d\n", "line1", lines[1].angle, lines[1].n);
 #endif
-		}
+			printf("fps : %.2f\n", calculeFrameRate());
 
-#if PLATFORM == PLATFORM_x86
+#ifdef SHOW_WINDOW
+		}
 		key = cvWaitKey(33);
 #endif
 	}
 
-#if PLATFORM == PLATFORM_x86
+#ifdef SHOW_WINDOW
 	destroyAllWindows();
 #endif
 
 	/* free memory */
+	if (capture) cvReleaseCapture(&capture);
+	if (img_in) cvReleaseImage(&img_in);
+	if (img_pgm) cvReleaseImage(&img_pgm);
 	quit(NULL, 0);
 }
 
@@ -526,10 +544,10 @@ void quit(char* msg, int retval)
 		fprintf(stderr, "\n");
 	}
 
-	if (capture) cvReleaseCapture(&capture);
+	//if (capture) cvReleaseCapture(&capture);
 	if (img_shared) cvReleaseImage(&img_shared);
-	if (img_in) cvReleaseImage(&img_in);
-	if (img_pgm) cvReleaseImage(&img_pgm);
+	//if (img_in) cvReleaseImage(&img_in);
+	//if (img_pgm) cvReleaseImage(&img_pgm);
 		
 	/* remove the FIFO */
 	unlink(LINE_DETECT_FIFO);
