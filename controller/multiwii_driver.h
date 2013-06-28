@@ -81,7 +81,7 @@ typedef struct
 
 int GetMotorMW(int fd, motor_data *md);
 int GetSensorMW(int fd, sensor_data *sd);
-void SetRcMW(int fd, rc_values *values);
+int SetRcMW(int fd, rc_values *values);
 inline void B16ToBuf(unsigned char *buf, int in);
 inline short BufToB16(unsigned char *buf);
 

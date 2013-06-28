@@ -25,7 +25,7 @@ int GetMotorMW(int fd, motor_data *md)
 	}
 	send_buf[5] = c;
 	
-	write(fd, send_buf, data_length + 6);           // send 7 character greeting
+	write(fd, send_buf, data_length + 6);
 	//read command
 	unsigned char rec_buf [100];
 	int n = read(fd, rec_buf, 6 + 4*2);  // read up to 100 characters if ready to read
@@ -64,7 +64,7 @@ int GetSensorMW(int fd, sensor_data *sd)
 	}
 	send_buf[5] = c;
 	
-	write (fd, send_buf, data_length + 6);           // send 7 character greeting
+	write (fd, send_buf, data_length + 6);
 	//read command
 	unsigned char rec_buf [100];
 	int n = read(fd, rec_buf, 6 + 9*2);  // read up to 100 characters if ready to read
@@ -91,7 +91,7 @@ int GetSensorMW(int fd, sensor_data *sd)
 	return 0;
 }
 
-void SetRcMW(int fd, rc_values *values)
+int SetRcMW(int fd, rc_values *values)
 {
 	int data_length = 16;
 	char c = 0;
@@ -117,6 +117,8 @@ void SetRcMW(int fd, rc_values *values)
 	}
 
 	send_buf[21] = c;
+	
+	return 0;
 }
 
 inline void B16ToBuf(unsigned char *buf, int in)

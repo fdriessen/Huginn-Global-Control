@@ -366,8 +366,13 @@ int main(int argc, char** argv)
 				line1detected = DetectLinePresence(bw, lines[0].angle, crossing, close_displacement, far_displacement, mean_threshold, sq_size);
 				line0detected = DetectLinePresence(bw, lines[1].angle, crossing, close_displacement, far_displacement, mean_threshold, sq_size);
 				
+				// detect cross to hover
+				if (line0detected == ld_close && line1detected == ld_close)
+				{
+					
+				}
 				// detect cross
-				if (line0detected == ld_all && line1detected == ld_close)
+				else if (line0detected == ld_close && line1detected == ld_close)
 				{
 					main_line = &lines[0];
 					line_element = le_cross;
