@@ -16,7 +16,7 @@
 #define MSP_RC                   105   //out message         8 rc chan
 #define MSP_RAW_GPS              106   //out message         fix, numsat, lat, lon, alt, speed, ground course
 #define MSP_COMP_GPS             107   //out message         distance home, direction home
-#define MSP_ATTITUDE             108   //out message         2 angles 1 heading
+#define MSP_ATTITUDE             108   //out message         2 angles 1 heading (pitch roll yaw headfreemodehold)
 #define MSP_ALTITUDE             109   //out message         altitude, variometer
 #define MSP_BAT                  110   //out message         vbat, powermetersum
 #define MSP_RC_TUNING            111   //out message         rc rate, rc expo, rollpitch rate, yaw rate, dyn throttle PID
@@ -39,6 +39,7 @@
 #define MSP_RESET_CONF           208   //in message          no param
 #define MSP_SET_WP               209   //in message          sets a given WP (WP#,lat, lon, alt, flags)
 #define MSP_SELECT_SETTING       210   //in message          Select Setting Number (0-2)
+#define MSP_BEAGLEBOARD			 211	// in message		 {roll pitch yaw}
 
 #define MSP_SPEK_BIND            240   //in message          no param
 
@@ -79,7 +80,16 @@ typedef struct
 	int aux4;
 } rc_values;
 
+typedef struct
+{
+	int roll;
+	int pitch;
+	int yaw;
+	int headfreemodehold;
+} attitude_data;
+
 int GetMotorMW(int fd, motor_data *md);
+int GetAttitudeMW(int fd, attitude_data *ad);
 int GetSensorMW(int fd, sensor_data *sd);
 int SetRcMW(int fd, rc_values *values);
 inline void B16ToBuf(unsigned char *buf, int in);

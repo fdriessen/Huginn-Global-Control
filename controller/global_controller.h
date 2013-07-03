@@ -30,6 +30,6 @@
 #define PITCH_FORWARD		PITCH_NEUTRAL + 10
 #define PITCH_BACKWARD		PITCH_NEUTRAL - 10
 
-void WaitForNewFrame(ld_information *info);
+int WaitForNewFrame(int fdfifo, ld_information *info);
 
 #endif /* GLOBAL_CONTROLLER_H_ */
