@@ -330,8 +330,11 @@ int main(int argc, char** argv)
 			Mat src = img_pgm;
 			// make edges smoother
 			//medianBlur(src,src, 3); //uneven and larger than 1
-			medianBlur(src,src, 5);
-			Canny(src, dst, 50, 100, 3); //GRAY output format
+			medianBlur(src,src, 3);
+			// create b&w 
+			Mat bw = src > 200;
+			// edge detection
+			Canny(bw, dst, 50, 100, 3); //GRAY output format
 			cdst = img_in;
 			//cvtColor(dst, cdst, COLOR_GRAY2BGR); //convert to color to be able to draw color lines
 
@@ -353,13 +356,9 @@ int main(int argc, char** argv)
 				// else nothing to do
 			}
 			
-			//Mat bw = src > 230;
-			Mat bw = src > 200;
-			//threshold(src, bw, 0, 255, CV_THRESH_BINARY | CV_THRESH_OTSU);
-			
-			int sq_size = 50;
-			int close_displacement = 40;
-			int far_displacement = 150;
+			int sq_size = 24;
+			int close_displacement = 20;
+			int far_displacement = 72;
 			int mean_threshold = 100;
 			
 			Point crossing;
