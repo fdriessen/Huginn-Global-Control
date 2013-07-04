@@ -21,7 +21,7 @@
 #endif
 
 #if PLATFORM == PLATFORM_BB
-#define WEBCAM_RESIZE
+//#define WEBCAM_RESIZE
 #endif
 
 #endif
