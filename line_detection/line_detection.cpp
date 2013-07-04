@@ -33,6 +33,258 @@ long long fin_mesure;
 
 IplImage*	img_shared;
 
+int main(int argc, char** argv)
+{
+	char key = 0;
+#ifdef SHOW_WINDOW
+	cvNamedWindow("Example3", CV_WINDOW_AUTOSIZE);
+#endif
+	
+	/* create the FIFO (named pipe) */
+	mkfifo(LINE_DETECT_FIFO, 0666);
+
+#if PLATFORM == PLATFORM_x86	
+	CvCapture* capture = cvCreateFileCapture(argv[1]);
+	printf("Input type = video\n\r");
+#else
+	CvCapture* capture = cvCreateCameraCapture(-1);
+	printf("Input type = webcam\n\r");
+#endif
+	if (!capture) {
+		quit("cvCapture failed", 1);
+	}
+
+#ifdef	WEBCAM_RESIZE
+	IplImage* img_interm = cvQueryFrame(capture);
+	IplImage* img_in = cvCreateImage(cvSize( img_interm->width / 2, img_interm->height / 2 ), img_interm->depth, img_interm->nChannels );
+	printf("Webcam is resized to %d x %d\n\r",(int)(img_interm->width/2),(int)(img_interm->height/2));
+#else
+	IplImage* img_in = cvQueryFrame(capture);
+#endif
+	IplImage* img_pgm = cvCreateImage(cvGetSize(img_in), IPL_DEPTH_8U, 1); //gray
+	img_shared = cvCreateImage(cvGetSize(img_in), IPL_DEPTH_8U, 3); //color
+	 CvSize size = cvGetSize(img_in);
+	
+	cvZero(img_pgm);
+	cvZero(img_shared);
+
+	// for text:
+#if (DEBUG_LEVEL <= 1) && (PLATFORM == PLATFORM_x86)
+	char text[50];
+	int fontFace = FONT_HERSHEY_PLAIN;
+	double fontScale = 1;
+	int thickness = 1;
+#endif
+
+	// for line detection
+	Mat dst, cdst;
+
+	while(1) {
+#ifdef SHOW_WINDOW
+		if(key == 27)
+		{
+#endif
+#if DEBUG_LEVEL <= 1
+			printf("\n\n");
+#endif
+			/* get a frame from camera */
+#ifdef WEBCAM_RESIZE
+			img_interm = cvQueryFrame(capture);
+			cvResize((CvArr*)img_interm, (CvArr*)img_in, INTER_LINEAR);
+#else
+			img_in = cvQueryFrame(capture);
+#endif
+			
+			//gray scale image for edge detection
+			cvCvtColor(img_in, img_pgm, CV_BGR2GRAY);
+			Mat src = img_pgm;
+			// make edges smoother
+			//medianBlur(src,src, 3); //uneven and larger than 1
+			medianBlur(src,src, 3);
+			// create b&w 
+			Mat bw = src > 200;
+			// edge detection
+			Canny(bw, dst, 50, 100, 3); //GRAY output format
+			cdst = img_in;
+			//cvtColor(dst, cdst, COLOR_GRAY2BGR); //convert to color to be able to draw color lines
+
+			vector<Vec4i> vectors;
+			LineStruct lines[2];
+
+			HoughLinesP(dst, vectors, 1, CV_PI/180, 50, 10, 10);
+			VectorsToLines(vectors, &lines[0], &lines[1]);
+			// line with lowest angle is main line
+			if(lines[0].n > 0 && lines[1].n > 0)
+			{
+				LineStruct tmp;
+				if(abs(lines[0].angle) > abs(lines[1].angle))
+				{
+					tmp = lines[0];
+					lines[0] = lines[1];
+					lines[1] = tmp;
+				}
+				// else nothing to do
+			}
+			
+			int sq_size = 24;
+			int close_displacement = 20;
+			int far_displacement = 72;
+			int mean_threshold = 100;
+			
+			Point crossing;
+			LineDetectedPoint line0detected;
+			LineDetectedPoint line1detected;
+			
+			LineElement line_element = le_unknown;
+			LineStruct *main_line;
+			ld_information ld_info;
+			
+			//DetectLinePresence(const Mat &bw, const LineStruct* line, const Point crossing, int dist_close, int dist_far, int threshold, int sq_size)
+			if(lines[0].n > 0 && lines[1].n > 0)
+			{
+				crossing = LinesCrossing(&lines[0], &lines[1]);
+				// angle line 0 check on the side of the crossing for line 1
+				line1detected = DetectLinePresence(bw, lines[0].angle, crossing, close_displacement, far_displacement, mean_threshold, sq_size);
+				line0detected = DetectLinePresence(bw, lines[1].angle, crossing, close_displacement, far_displacement, mean_threshold, sq_size);
+				
+				if (line0detected == ld_close && line1detected == ld_close)
+				{
+					main_line = &lines[0];
+					ld_info.element = (int)le_cross;
+					
+					ld_info.mode = MODE_LINE_HOVER;
+					ld_info.data.hover.angle_sp = lines[0].angle;
+					ld_info.data.hover.angle_cv = 0.0;
+					ld_info.data.hover.x_sp = crossing.x;
+					ld_info.data.hover.x_cv = 0;
+					ld_info.data.hover.y_sp = crossing.y;
+					ld_info.data.hover.y_cv = 0;
+				}
+				// detect cross on line
+				else if (line0detected == ld_all && line1detected == ld_close)
+				{
+					main_line = &lines[0];
+					ld_info.element = (int)le_cross;
+					
+					ld_info.mode = MODE_LINE_HOVER;
+					ld_info.data.hover.angle_sp = lines[0].angle;
+					ld_info.data.hover.angle_cv = 0.0;
+					ld_info.data.hover.x_sp = crossing.x;
+					ld_info.data.hover.x_cv = 0;
+					ld_info.data.hover.y_sp = crossing.y;
+					ld_info.data.hover.y_cv = 0;
+				}
+				else if (line0detected == ld_close && line1detected == ld_all)
+				{
+					// in rotate
+					main_line = &lines[1];
+					ld_info.element = (int)le_cross;
+					
+					ld_info.mode = MODE_LINE_HOVER;
+					ld_info.data.hover.angle_sp = lines[1].angle;
+					ld_info.data.hover.angle_cv = 0.0;
+					ld_info.data.hover.x_sp = crossing.x;
+					ld_info.data.hover.x_cv = 0;
+					ld_info.data.hover.y_sp = crossing.y;
+					ld_info.data.hover.y_cv = 0;
+				}
+				// detect corner
+				else if ((line0detected == ld_plus || line0detected == ld_minus)
+				         && (line1detected == ld_plus || line1detected == ld_minus))
+				{
+					if (line0detected == ld_minus && line1detected == ld_plus)
+					{
+						ld_info.element = (int)le_corner_right;
+					}
+					else if (line0detected == ld_minus && line1detected == ld_minus)
+					{
+						ld_info.element = (int)le_corner_left;
+					}
+					else if (line0detected == ld_plus && line1detected == ld_plus)
+					{
+						ld_info.element = (int)le_corner_right_taken;
+					}
+					else if (line0detected == ld_plus && line1detected == ld_minus)
+					{
+						ld_info.element = (int)le_corner_left_taken;
+					}
+				}
+				// detect T end
+				else if (line0detected == ld_minus && line1detected == ld_close)
+				{
+					ld_info.element = (int)le_end;
+				}
+				// detect T begin
+				else if (line0detected == ld_plus && line1detected == ld_close)
+				{
+					ld_info.element = (int)le_begin;
+				}
+			}
+			else if(lines[0].n > 0)
+			{
+				// line follow
+				ld_info.element = (int)le_none;
+			}
+			else
+			{
+				// no lines found
+			}
+
+			// send control info to controller
+			int fd_ldfifo = open(LINE_DETECT_FIFO, O_WRONLY/* | O_NONBLOCK*/);
+			if (fd_ldfifo < 0)
+			{
+				printf("ERROR opening fifo %s, error nr: %d\n", LINE_DETECT_FIFO, fd_ldfifo);
+				return -1;
+			}
+			int bytes_written = write(fd_ldfifo, &ld_info, sizeof(ld_information));
+			close(fd_ldfifo);
+				
+#if DEBUG_LEVEL <= 1
+			char le_strings[][50] = {"le_cross","le_corner_left","le_corner_right","le_corner_left_taken","le_corner_right_taken","le_end","le_begin","le_none","le_unknown"};
+			
+			printf("line_element = %s\n", le_strings[line_element-1]);
+			printf("value line0detected mean = %x\n", line0detected);
+			printf("value line1detected mean = %x\n", line1detected);
+		
+			// printf("(x,y)_0 = (%d,%d), (dx,dy)_0 = (%d,%d)\n", lines[0].location.x, lines[0].location.y, lines[0].vector.x, lines[0].vector.y);
+			// printf("(x,y)_1 = (%d,%d), (dx,dy)_1 = (%d,%d)\n", lines[1].location.x, lines[1].location.y, lines[1].vector.x, lines[1].vector.y);
+			// printf("a0=%f, b0=%f, a1=%f, b1=%f\n", a0, b0, a1, b1);
+			// printf("cross (x,y) = (%d,%d)\n", cross.x, cross.y);
+			
+#if PLATFORM == PLATFORM_x86
+			//rectangle(bw, cvRect(50, 50, 10, 100), Scalar(255,255,255));
+			circle(cdst, crossing, 4, Scalar(0,0,255), -1, 8, 0 );
+
+			line(cdst, lines[0].location, lines[0].location + lines[0].vector ,Scalar(255,0,0), 3, CV_AA);
+			line(cdst, lines[1].location, lines[1].location + lines[1].vector ,Scalar(0,255,0), 3, CV_AA);
+			img_shared->imageData = (char *)src.data;
+			//cvFlip(img_shared, img_shared, 1);
+			//cvShowImage("Example3", img_shared);
+			imshow("Example3", bw);
+#endif
+			printf("%s \nangle=%f\nn=%d\n", "line0", lines[0].angle, lines[0].n);
+			printf("%s \nangle=%f\nn=%d\n", "line1", lines[1].angle, lines[1].n);
+#endif
+			printf("fps : %.2f\n", calculeFrameRate());
+
+#ifdef SHOW_WINDOW
+		}
+		key = cvWaitKey(33);
+#endif
+	}
+
+#ifdef SHOW_WINDOW
+	destroyAllWindows();
+#endif
+
+	/* free memory */
+	if (capture) cvReleaseCapture(&capture);
+	if (img_in) cvReleaseImage(&img_in);
+	if (img_pgm) cvReleaseImage(&img_pgm);
+	quit(NULL, 0);
+}
+
 int VectorsToLines(const vector<Vec4i>& vectors, LineStruct* line0, LineStruct* line1)
 {
 	line0->vector = Point(0,0);
@@ -261,246 +513,6 @@ LineDetectedPoint DetectLinePresence(Mat &bw, const float angle, const Point cro
 	}
 	
 	return result;
-}
-
-int main(int argc, char** argv)
-{
-	char key = 0;
-#ifdef SHOW_WINDOW
-	cvNamedWindow("Example3", CV_WINDOW_AUTOSIZE);
-#endif
-	
-	/* create the FIFO (named pipe) */
-	mkfifo(LINE_DETECT_FIFO, 0666);
-
-#if PLATFORM == PLATFORM_x86	
-	CvCapture* capture = cvCreateFileCapture(argv[1]);
-	printf("Input type = video\n\r");
-#else
-	CvCapture* capture = cvCreateCameraCapture(-1);
-	printf("Input type = webcam\n\r");
-#endif
-	if (!capture) {
-		quit("cvCapture failed", 1);
-	}
-
-#ifdef	WEBCAM_RESIZE
-	IplImage* img_interm = cvQueryFrame(capture);
-	IplImage* img_in = cvCreateImage(cvSize( img_interm->width / 2, img_interm->height / 2 ), img_interm->depth, img_interm->nChannels );
-	printf("Webcam is resized to %d x %d\n\r",(int)(img_interm->width/2),(int)(img_interm->height/2));
-#else
-	IplImage* img_in = cvQueryFrame(capture);
-#endif
-	IplImage* img_pgm = cvCreateImage(cvGetSize(img_in), IPL_DEPTH_8U, 1); //gray
-	img_shared = cvCreateImage(cvGetSize(img_in), IPL_DEPTH_8U, 3); //color
-	 CvSize size = cvGetSize(img_in);
-	
-	cvZero(img_pgm);
-	cvZero(img_shared);
-
-	// for text:
-#if (DEBUG_LEVEL <= 1) && (PLATFORM == PLATFORM_x86)
-	char text[50];
-	int fontFace = FONT_HERSHEY_PLAIN;
-	double fontScale = 1;
-	int thickness = 1;
-#endif
-
-	// for line detection
-	Mat dst, cdst;
-
-	while(1) {
-#ifdef SHOW_WINDOW
-		if(key == 27)
-		{
-#endif
-#if DEBUG_LEVEL <= 1
-			printf("\n\n");
-#endif
-			/* get a frame from camera */
-#ifdef WEBCAM_RESIZE
-			img_interm = cvQueryFrame(capture);
-			cvResize((CvArr*)img_interm, (CvArr*)img_in, INTER_LINEAR);
-#else
-			img_in = cvQueryFrame(capture);
-#endif
-			
-			//gray scale image for edge detection
-			cvCvtColor(img_in, img_pgm, CV_BGR2GRAY);
-			Mat src = img_pgm;
-			// make edges smoother
-			//medianBlur(src,src, 3); //uneven and larger than 1
-			medianBlur(src,src, 3);
-			// create b&w 
-			Mat bw = src > 200;
-			// edge detection
-			Canny(bw, dst, 50, 100, 3); //GRAY output format
-			cdst = img_in;
-			//cvtColor(dst, cdst, COLOR_GRAY2BGR); //convert to color to be able to draw color lines
-
-			vector<Vec4i> vectors;
-			LineStruct lines[2];
-
-			HoughLinesP(dst, vectors, 1, CV_PI/180, 50, 10, 10);
-			VectorsToLines(vectors, &lines[0], &lines[1]);
-			// line with lowest angle is main line
-			if(lines[0].n > 0 && lines[1].n > 0)
-			{
-				LineStruct tmp;
-				if(abs(lines[0].angle) > abs(lines[1].angle))
-				{
-					tmp = lines[0];
-					lines[0] = lines[1];
-					lines[1] = tmp;
-				}
-				// else nothing to do
-			}
-			
-			int sq_size = 24;
-			int close_displacement = 20;
-			int far_displacement = 72;
-			int mean_threshold = 100;
-			
-			Point crossing;
-			LineDetectedPoint line0detected;
-			LineDetectedPoint line1detected;
-			
-			LineElement line_element = le_unknown;
-			LineStruct *main_line;
-			ld_information ld_info;
-			
-			//DetectLinePresence(const Mat &bw, const LineStruct* line, const Point crossing, int dist_close, int dist_far, int threshold, int sq_size)
-			if(lines[0].n > 0 && lines[1].n > 0)
-			{
-				crossing = LinesCrossing(&lines[0], &lines[1]);
-				// angle line 0 check on the side of the crossing for line 1
-				line1detected = DetectLinePresence(bw, lines[0].angle, crossing, close_displacement, far_displacement, mean_threshold, sq_size);
-				line0detected = DetectLinePresence(bw, lines[1].angle, crossing, close_displacement, far_displacement, mean_threshold, sq_size);
-				
-				// detect cross to hover
-				if (line0detected == ld_close && line1detected == ld_close)
-				{
-					
-				}
-				// detect cross
-				else if (line0detected == ld_close && line1detected == ld_close)
-				{
-					main_line = &lines[0];
-					line_element = le_cross;
-					
-					ld_info.mode = MODE_LINE_HOVER;
-					ld_info.data.hover.angle_sp = lines[0].angle;
-					ld_info.data.hover.angle_cv = 0.0;
-					ld_info.data.hover.x_sp = crossing.x;
-					ld_info.data.hover.x_cv = 0;
-					ld_info.data.hover.y_sp = crossing.y;
-					ld_info.data.hover.y_cv = 0;
-				}
-				// detect cross on line
-				else if (line0detected == ld_all && line1detected == ld_close)
-				{
-					main_line = &lines[0];
-					line_element = le_cross;
-					ld_information ld_info;
-					ld_info.mode = MODE_LINE_HOVER;
-				}
-				else if (line1detected == ld_all && line0detected == ld_close)
-				{
-					// in rotate
-					main_line = &lines[1];
-					line_element = le_cross;
-				}
-				// detect corner
-				else if ((line0detected == ld_plus || line0detected == ld_minus)
-				         && (line1detected == ld_plus || line1detected == ld_minus))
-				{
-					if (line0detected == ld_minus && line1detected == ld_plus)
-					{
-						line_element = le_corner_right;
-					}
-					else if (line0detected == ld_minus && line1detected == ld_minus)
-					{
-						line_element = le_corner_left;
-					}
-					else if (line0detected == ld_plus && line1detected == ld_plus)
-					{
-						line_element = le_corner_right_taken;
-					}
-					else if (line0detected == ld_plus && line1detected == ld_minus)
-					{
-						line_element = le_corner_left_taken;
-					}
-				}
-				// detect T end
-				else if (line0detected == ld_minus && line1detected == ld_close)
-				{
-					line_element = le_end;
-				}
-				// detect T begin
-				else if (line0detected == ld_plus && line1detected == ld_close)
-				{
-					line_element = le_begin;
-				}
-			}
-			else if(lines[0].n > 0)
-			{
-				// line follow
-				line_element = le_none;
-			}
-			else
-			{
-				// no lines found
-			}
-
-			// send control info to controller
-			int fd;
-			fd = open(LINE_DETECT_FIFO, O_WRONLY | O_NONBLOCK);
-			write(fd, &ld_info, sizeof(ld_information));
-			close(fd);
-			
-#if DEBUG_LEVEL <= 1
-			char le_strings[][50] = {"le_cross","le_corner_left","le_corner_right","le_corner_left_taken","le_corner_right_taken","le_end","le_begin","le_none","le_unknown"};
-			
-			printf("line_element = %s\n", le_strings[line_element-1]);
-			printf("value line0detected mean = %x\n", line0detected);
-			printf("value line1detected mean = %x\n", line1detected);
-		
-			// printf("(x,y)_0 = (%d,%d), (dx,dy)_0 = (%d,%d)\n", lines[0].location.x, lines[0].location.y, lines[0].vector.x, lines[0].vector.y);
-			// printf("(x,y)_1 = (%d,%d), (dx,dy)_1 = (%d,%d)\n", lines[1].location.x, lines[1].location.y, lines[1].vector.x, lines[1].vector.y);
-			// printf("a0=%f, b0=%f, a1=%f, b1=%f\n", a0, b0, a1, b1);
-			// printf("cross (x,y) = (%d,%d)\n", cross.x, cross.y);
-			
-#if PLATFORM == PLATFORM_x86
-			//rectangle(bw, cvRect(50, 50, 10, 100), Scalar(255,255,255));
-			circle(cdst, crossing, 4, Scalar(0,0,255), -1, 8, 0 );
-
-			line(cdst, lines[0].location, lines[0].location + lines[0].vector ,Scalar(255,0,0), 3, CV_AA);
-			line(cdst, lines[1].location, lines[1].location + lines[1].vector ,Scalar(0,255,0), 3, CV_AA);
-			img_shared->imageData = (char *)src.data;
-			//cvFlip(img_shared, img_shared, 1);
-			//cvShowImage("Example3", img_shared);
-			imshow("Example3", bw);
-#endif
-			printf("%s \nangle=%f\nn=%d\n", "line0", lines[0].angle, lines[0].n);
-			printf("%s \nangle=%f\nn=%d\n", "line1", lines[1].angle, lines[1].n);
-#endif
-			printf("fps : %.2f\n", calculeFrameRate());
-
-#ifdef SHOW_WINDOW
-		}
-		key = cvWaitKey(33);
-#endif
-	}
-
-#ifdef SHOW_WINDOW
-	destroyAllWindows();
-#endif
-
-	/* free memory */
-	if (capture) cvReleaseCapture(&capture);
-	if (img_in) cvReleaseImage(&img_in);
-	if (img_pgm) cvReleaseImage(&img_pgm);
-	quit(NULL, 0);
 }
 
 bool belongs_to_line(float vector_angle, float line_angle, float margin)

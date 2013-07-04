@@ -52,5 +52,9 @@ long long getTimeMillis();
 double calculeFrameRate();
 void quit(char* msg, int retval);
 bool belongs_to_line(float vector_angle, float line_angle, float margin);
+LineDetectedPoint DetectLinePresence(Mat &bw, const float angle, const Point crossing, int dist_close, int dist_far, int threshold, int sq_size);
+Point LinesCrossing(const LineStruct* line0, const LineStruct* line1);
+int VectorsToLines(const vector<Vec4i>& vectors, LineStruct* line0, LineStruct* line1);
+
 
 #endif /* LINE_DETECTION_H_ */

@@ -73,7 +73,6 @@ typedef struct
 	int pitch;
 	int yaw;
 	int throttle;
-	int height;
 	int aux1;
 	int aux2;
 	int aux3;
@@ -88,11 +87,25 @@ typedef struct
 	int headfreemodehold;
 } attitude_data;
 
+typedef struct
+{
+	int altitude;
+	int vario;
+} altitude_data;
+
 int GetMotorMW(int fd, motor_data *md);
-int GetAttitudeMW(int fd, attitude_data *ad);
+int GetAttitudeMW(int fd, attitude_data *attd);
+int GetAltitudeMW(int fd, altitude_data *altd);
 int GetSensorMW(int fd, sensor_data *sd);
 int SetRcMW(int fd, rc_values *values);
+int GetRcMW(int fd, rc_values *rc);
 inline void B16ToBuf(unsigned char *buf, int in);
 inline short BufToB16(unsigned char *buf);
+
+inline short Deserialize32(unsigned char *buf);
+inline short Deserialize16(unsigned char *buf);
+inline void Serialize16(short data);
+inline void Serialize8(unsigned char data);
+
 
 #endif /* MULTIWII_DRIVER_H_ */

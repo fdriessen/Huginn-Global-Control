@@ -48,6 +48,7 @@ typedef struct
 typedef struct
 {
 	int mode;
+	int element;
 	union
 	{
 		ld_follow_info follow;
