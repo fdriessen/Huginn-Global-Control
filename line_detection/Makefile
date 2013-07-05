@@ -20,5 +20,5 @@ $(TARGET): $(OBJECTS)
 	$(CC) $(OPT) $(CFLAGS) $< -o $@
 
 clean:
-	rm $(EXECUTABLE) $(OBJECTS)
+	rm $(TARGET) $(OBJECTS)
 	

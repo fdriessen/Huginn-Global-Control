@@ -8,7 +8,7 @@
 #ifndef GLOBAL_CONTROLLER_H_
 #define GLOBAL_CONTROLLER_H_
 
-#define FOLLOW_ANGLE_THRESHOLD 0.0174532925f // 1 deg to rad
+#define FOLLOW_ANGLE_THRESHOLD 0.1 // x deg to rad
 #define FOLLOW_X_THRESHOLD	10 //pixels
 
 #define ROTATE_X_THRESHOLD	10 //pixels
@@ -16,7 +16,7 @@
 
 #define HOVER_X_THRESHOLD	10 //pixels
 #define HOVER_Y_THRESHOLD	10 //pixels
-#define HOVER_ANGLE_THRESHOLD 0.0174532925f // 1 deg to rad
+#define HOVER_ANGLE_THRESHOLD 0.1f // x deg to rad
 
 #define YAW_NEUTRAL			1500
 #define YAW_RIGHT			YAW_NEUTRAL + 10

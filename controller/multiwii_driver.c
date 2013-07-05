@@ -72,6 +72,7 @@ int GetMotorMW(int fd, motor_data *md)
 	send_buf[5] = c;
 	
 	write(fd, send_buf, data_length + 6);
+	usleep(10000);
 	//read command
 	unsigned char rec_buf [100];
 	int n = read(fd, rec_buf, 6 + 8*2);  // read up to 100 characters if ready to read
@@ -122,6 +123,7 @@ int GetAttitudeMW(int fd, attitude_data *attd)
 	printf("GetAttitudeMW: written %x %x %x %x %x %x\n", send_buf[0], send_buf[1], send_buf[2], send_buf[3], send_buf[4], send_buf[5]);
 #endif
 
+	usleep(10000);
 	//read command
 	unsigned char rec_buf[100]; 
 	int n = read(fd, rec_buf, 6 + 4*2);  // read up to 100 characters if ready to read
@@ -172,6 +174,7 @@ int GetSensorMW(int fd, sensor_data *sd)
 	printf("GetSensorMW: writen %x %x %x %x %x %x\n", send_buf[0], send_buf[1], send_buf[2], send_buf[3], send_buf[4], send_buf[5]);
 #endif
 
+	usleep(10000);
 	//read command
 	unsigned char rec_buf [100];
 	int n = read(fd, rec_buf, 6 + 9*2);  // read up to 100 characters if ready to read
@@ -223,6 +226,7 @@ int GetRcMW(int fd, rc_values *rc)
 	printf("GetRcMW: writen %x %x %x %x %x %x\n", send_buf[0], send_buf[1], send_buf[2], send_buf[3], send_buf[4], send_buf[5]);
 #endif
 
+	usleep(10000);
 	//read command
 	unsigned char rec_buf [100];
 	int n = read(fd, rec_buf, 6 + 8*2);  // read up to 100 characters if ready to read
@@ -271,6 +275,7 @@ int GetAltitudeMW(int fd, altitude_data *altd)
 	printf("GetAltitudeMW: writen %x %x %x %x %x %x\n", send_buf[0], send_buf[1], send_buf[2], send_buf[3], send_buf[4], send_buf[5]);
 #endif
 
+	usleep(10000);
 	//read command
 	unsigned char rec_buf [100];
 	unsigned char rec_data_length = 6;
@@ -315,11 +320,12 @@ int SetRcMW(int fd, rc_values *values)
 	
 	int bytes_write = write(fd, send_buf, data_length + 6);
 	printf("SetRcMW: %2x%2x%2x%2x%2x%2x%2x%2x%2x%2x%2x%2x\n", send_buf[0],send_buf[1],send_buf[2],send_buf[3],send_buf[4],send_buf[5],send_buf[6],send_buf[7],send_buf[8],send_buf[9],send_buf[10],send_buf[11]);
-	
+	usleep(10000);
 	//read command
 	unsigned char rec_buf[100];
 	int n = read(fd, rec_buf, 6);  // read up to 100 characters if ready to read
 	printf("SetRcMW: %d bytes read from serial\n", n);
+	printf("SetRcMW: %2x%2x%2x%2x%2x%2x\n", rec_buf[0],rec_buf[1],rec_buf[2],rec_buf[3],rec_buf[4],rec_buf[5]);
 
 	return bytes_write;
 }

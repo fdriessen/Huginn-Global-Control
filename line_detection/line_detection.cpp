@@ -43,7 +43,7 @@ int main(int argc, char** argv)
 	/* create the FIFO (named pipe) */
 	mkfifo(LINE_DETECT_FIFO, 0666);
 
-#if PLATFORM == PLATFORM_x86	
+#if PLATFORM == PLATFORM_x86
 	CvCapture* capture = cvCreateFileCapture(argv[1]);
 	printf("Input type = video\n\r");
 #else
@@ -63,7 +63,7 @@ int main(int argc, char** argv)
 #endif
 	IplImage* img_pgm = cvCreateImage(cvGetSize(img_in), IPL_DEPTH_8U, 1); //gray
 	img_shared = cvCreateImage(cvGetSize(img_in), IPL_DEPTH_8U, 3); //color
-	 CvSize size = cvGetSize(img_in);
+	CvSize size = cvGetSize(img_in);
 	
 	cvZero(img_pgm);
 	cvZero(img_shared);
@@ -75,6 +75,14 @@ int main(int argc, char** argv)
 	double fontScale = 1;
 	int thickness = 1;
 #endif
+
+	// open fifo
+	int fd_ldfifo = open(LINE_DETECT_FIFO, O_WRONLY | O_NONBLOCK);
+	if (fd_ldfifo < 0)
+	{
+		printf("ERROR opening fifo %s, error nr: %d\n", LINE_DETECT_FIFO, fd_ldfifo);
+		return -1;
+	}
 
 	// for line detection
 	Mat dst, cdst;
@@ -153,12 +161,12 @@ int main(int argc, char** argv)
 					ld_info.element = (int)le_cross;
 					
 					ld_info.mode = MODE_LINE_HOVER;
-					ld_info.data.hover.angle_sp = lines[0].angle;
-					ld_info.data.hover.angle_cv = 0.0;
-					ld_info.data.hover.x_sp = crossing.x;
-					ld_info.data.hover.x_cv = 0;
-					ld_info.data.hover.y_sp = crossing.y;
-					ld_info.data.hover.y_cv = 0;
+					ld_info.data.hover.angle_sp = 0.20;
+					ld_info.data.hover.angle_cv = lines[0].angle;
+					ld_info.data.hover.x_sp = 24;
+					ld_info.data.hover.x_cv = crossing.x - size.width/2;
+					ld_info.data.hover.y_sp = 23;
+					ld_info.data.hover.y_cv = crossing.y - size.height/2;
 				}
 				// detect cross on line
 				else if (line0detected == ld_all && line1detected == ld_close)
@@ -231,19 +239,12 @@ int main(int argc, char** argv)
 			}
 
 			// send control info to controller
-			int fd_ldfifo = open(LINE_DETECT_FIFO, O_WRONLY/* | O_NONBLOCK*/);
-			if (fd_ldfifo < 0)
-			{
-				printf("ERROR opening fifo %s, error nr: %d\n", LINE_DETECT_FIFO, fd_ldfifo);
-				return -1;
-			}
 			int bytes_written = write(fd_ldfifo, &ld_info, sizeof(ld_information));
-			close(fd_ldfifo);
 				
 #if DEBUG_LEVEL <= 1
 			char le_strings[][50] = {"le_cross","le_corner_left","le_corner_right","le_corner_left_taken","le_corner_right_taken","le_end","le_begin","le_none","le_unknown"};
 			
-			printf("line_element = %s\n", le_strings[line_element-1]);
+			printf("line_element = %s\n", le_strings[ld_info.element-1]);
 			printf("value line0detected mean = %x\n", line0detected);
 			printf("value line1detected mean = %x\n", line1detected);
 		
@@ -279,6 +280,7 @@ int main(int argc, char** argv)
 #endif
 
 	/* free memory */
+	close(fd_ldfifo);
 	if (capture) cvReleaseCapture(&capture);
 	if (img_in) cvReleaseImage(&img_in);
 	if (img_pgm) cvReleaseImage(&img_pgm);
