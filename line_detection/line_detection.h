@@ -8,6 +8,10 @@
 #ifndef LINE_DETECTION_H_
 #define LINE_DETECTION_H_
 
+#define ANGLE_OFFSET	0.20
+#define X_OFFSET		24
+#define Y_OFFSET		23
+
 typedef struct {
 	int n;
 	Point vector;

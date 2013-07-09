@@ -11,6 +11,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <errno.h>
 
 #include "../common.h"
 #include "../config.h"
@@ -28,7 +29,7 @@ int main(int argc, char **argv)
 	int fd_ser = open(serial_port, O_RDWR | O_NOCTTY | O_SYNC);
 	if (fd_ser < 0)
 	{
-		printf("ERROR opening %s, error nr: %d\n", serial_port, fd_ser);
+		printf("ERROR opening %s, error nr: %d\n", serial_port, errno);
 		printf("Probably forgot sudo\n");
 		return -1;
 	}
@@ -59,7 +60,7 @@ int main(int argc, char **argv)
 #endif	
 	while(true)
 	{
-		usleep(40000);
+		usleep(100000);
 		printf("\033c");
 #if SERIAL
 		// test
@@ -106,28 +107,28 @@ int main(int argc, char **argv)
 			
 			printf("ld.mode = %d\n", ld.mode);
 			printf("ld.element = %d\n", ld.element);
-			printf("ld.data.hover.angle_sp = %f\n", ld.data.hover.angle_sp);
-			printf("ld.data.hover.angle_cv = %f\n", ld.data.hover.angle_cv);
-			printf("ld.data.hover.x_sp = %d\n", ld.data.hover.x_sp);
-			printf("ld.data.hover.x_cv = %d\n", ld.data.hover.x_cv);
-			printf("ld.data.hover.y_sp = %d\n", ld.data.hover.y_sp);
-			printf("ld.data.hover.y_cv = %d\n", ld.data.hover.y_cv);
+			printf("ld.data.hover.angle_sp = %f\n", ld.angle_sp);
+			printf("ld.data.hover.angle_cv = %f\n", ld.angle_cv);
+			printf("ld.data.hover.x_sp = %d\n", ld.x_sp);
+			printf("ld.data.hover.x_cv = %d\n", ld.x_cv);
+			printf("ld.data.hover.y_sp = %d\n", ld.y_sp);
+			printf("ld.data.hover.y_cv = %d\n", ld.y_cv);
 
 			
 			switch(ld.mode)
 			{
 				case MODE_LINE_FOLLOW:
-					if(ld.data.follow.angle_cv - ld.data.follow.angle_sp < FOLLOW_ANGLE_THRESHOLD)
+					if(ld.angle_cv - ld.angle_sp < FOLLOW_ANGLE_THRESHOLD)
 						rc_set.yaw = YAW_LEFT;
-					else if(ld.data.follow.angle_cv - ld.data.follow.angle_sp > FOLLOW_ANGLE_THRESHOLD)
+					else if(ld.angle_cv - ld.angle_sp > FOLLOW_ANGLE_THRESHOLD)
 						rc_set.yaw = YAW_RIGHT;
 					else
 						rc_set.yaw = YAW_NEUTRAL;
 
 
-					if(ld.data.follow.x_cv - ld.data.follow.x_sp < -FOLLOW_X_THRESHOLD)
+					if(ld.x_cv - ld.x_sp < -FOLLOW_X_THRESHOLD)
 						rc_set.roll = ROLL_LEFT;
-					else if(ld.data.follow.x_cv - ld.data.follow.x_sp > FOLLOW_X_THRESHOLD)
+					else if(ld.x_cv - ld.x_sp > FOLLOW_X_THRESHOLD)
 						rc_set.roll = ROLL_RIGHT;
 					else
 						rc_set.roll = ROLL_NEUTRAL;
@@ -137,39 +138,39 @@ int main(int argc, char **argv)
 				break;
 
 				case MODE_LINE_HOVER:
-					if(ld.data.hover.x_cv - ld.data.hover.x_sp < -HOVER_X_THRESHOLD)
+					if(ld.x_cv - ld.x_sp < -HOVER_X_THRESHOLD)
 						rc_set.roll = ROLL_LEFT;
-					else if(ld.data.hover.x_cv - ld.data.hover.x_sp > HOVER_X_THRESHOLD)
+					else if(ld.x_cv - ld.x_sp > HOVER_X_THRESHOLD)
 						rc_set.roll = ROLL_RIGHT;
 					else
 						rc_set.roll = ROLL_NEUTRAL;
 
-					if(ld.data.hover.y_cv - ld.data.hover.y_sp < -HOVER_Y_THRESHOLD)
+					if(ld.y_cv - ld.y_sp < -HOVER_Y_THRESHOLD)
 						rc_set.pitch = PITCH_FORWARD;
-					else if(ld.data.hover.y_cv - ld.data.hover.y_sp > HOVER_Y_THRESHOLD)
+					else if(ld.y_cv - ld.y_sp > HOVER_Y_THRESHOLD)
 						rc_set.pitch = PITCH_BACKWARD;
 					else
 						rc_set.pitch = PITCH_NEUTRAL;
 
-					if(ld.data.hover.angle_cv - ld.data.hover.angle_sp < -HOVER_ANGLE_THRESHOLD)
+					if(ld.angle_cv - ld.angle_sp < -HOVER_ANGLE_THRESHOLD)
 						rc_set.yaw = YAW_LEFT;
-					else if(ld.data.hover.angle_cv - ld.data.hover.angle_sp > HOVER_ANGLE_THRESHOLD)
+					else if(ld.angle_cv - ld.angle_sp > HOVER_ANGLE_THRESHOLD)
 						rc_set.yaw = YAW_RIGHT;
 					else
 						rc_set.yaw = YAW_NEUTRAL;
 				break;
 
 				case MODE_LINE_ROTATE:
-					if(ld.data.rotate.x_cv - ld.data.rotate.x_sp < -ROTATE_X_THRESHOLD)
+					if(ld.x_cv - ld.x_sp < -ROTATE_X_THRESHOLD)
 						rc_set.roll = ROLL_LEFT;
-					else if(ld.data.rotate.x_cv - ld.data.rotate.x_sp > ROTATE_X_THRESHOLD)
+					else if(ld.x_cv - ld.x_sp > ROTATE_X_THRESHOLD)
 						rc_set.roll = ROLL_RIGHT;
 					else
 						rc_set.roll = ROLL_NEUTRAL;
 
-					if(ld.data.rotate.y_cv - ld.data.rotate.y_sp < -ROTATE_Y_THRESHOLD)
+					if(ld.y_cv - ld.y_sp < -ROTATE_Y_THRESHOLD)
 						rc_set.pitch = PITCH_FORWARD;
-					else if(ld.data.rotate.y_cv - ld.data.rotate.y_sp > ROTATE_Y_THRESHOLD)
+					else if(ld.y_cv - ld.y_sp > ROTATE_Y_THRESHOLD)
 						rc_set.pitch = PITCH_BACKWARD;
 					else
 						rc_set.pitch = PITCH_NEUTRAL;
@@ -180,10 +181,10 @@ int main(int argc, char **argv)
 
 			printf("%s: %4d, %4d, %4d\n", "RC set (roll, pitch, yaw)\n", rc_set.roll, rc_set.pitch, rc_set.yaw);
 	#if SERIAL
-			if(SetRcMW(fd_ser, &rc_set) < 0)
-			{
-				printf("ERROR: SetRcMW");
-			}
+			// if(SetRcMW(fd_ser, &rc_set) < 0)
+			// {
+				// printf("ERROR: SetRcMW");
+			// }
 	#endif
 		}
 		else
@@ -200,8 +201,10 @@ int main(int argc, char **argv)
 int WaitForNewFrame(int fdfifo, ld_information *info)
 {
 	// open line detection fifo in read mode
-	int bytes_read = read(fdfifo, info, sizeof(ld_information));
-	printf("WaitForNewFrame: bytes read = %d\n", bytes_read);
+	unsigned char buf[1000];
+	int bytes_read = read(fdfifo, buf, 1000);
+	memcpy(info, buf, sizeof(ld_information));
+	//printf("WaitForNewFrame: bytes read = %d\n", bytes_read);
 	return bytes_read;
 }
 

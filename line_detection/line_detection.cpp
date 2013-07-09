@@ -40,9 +40,6 @@ int main(int argc, char** argv)
 	cvNamedWindow("Example3", CV_WINDOW_AUTOSIZE);
 #endif
 	
-	/* create the FIFO (named pipe) */
-	mkfifo(LINE_DETECT_FIFO, 0666);
-
 #if PLATFORM == PLATFORM_x86
 	CvCapture* capture = cvCreateFileCapture(argv[1]);
 	printf("Input type = video\n\r");
@@ -76,8 +73,12 @@ int main(int argc, char** argv)
 	int thickness = 1;
 #endif
 
+	/* create the FIFO (named pipe) */
+	//unlink(LINE_DETECT_FIFO);
+	mkfifo(LINE_DETECT_FIFO, 0666);
+
 	// open fifo
-	int fd_ldfifo = open(LINE_DETECT_FIFO, O_WRONLY | O_NONBLOCK);
+	int fd_ldfifo = open(LINE_DETECT_FIFO, O_WRONLY/* | O_NONBLOCK*/);
 	if (fd_ldfifo < 0)
 	{
 		printf("ERROR opening fifo %s, error nr: %d\n", LINE_DETECT_FIFO, fd_ldfifo);
@@ -135,8 +136,8 @@ int main(int argc, char** argv)
 			}
 			
 			int sq_size = 24;
-			int close_displacement = 20;
-			int far_displacement = 72;
+			int close_displacement = 25;
+			int far_displacement = 100;
 			int mean_threshold = 100;
 			
 			Point crossing;
@@ -155,18 +156,21 @@ int main(int argc, char** argv)
 				line1detected = DetectLinePresence(bw, lines[0].angle, crossing, close_displacement, far_displacement, mean_threshold, sq_size);
 				line0detected = DetectLinePresence(bw, lines[1].angle, crossing, close_displacement, far_displacement, mean_threshold, sq_size);
 				
-				if (line0detected == ld_close && line1detected == ld_close)
+				if ((line0detected == ld_close && line1detected == ld_close)
+				|| (line0detected == ld_all && line1detected == ld_close)
+				|| (line0detected == ld_close && line1detected == ld_all)
+				|| (line0detected == ld_all && line1detected == ld_all))
 				{
 					main_line = &lines[0];
 					ld_info.element = (int)le_cross;
 					
 					ld_info.mode = MODE_LINE_HOVER;
-					ld_info.data.hover.angle_sp = 0.20;
-					ld_info.data.hover.angle_cv = lines[0].angle;
-					ld_info.data.hover.x_sp = 24;
-					ld_info.data.hover.x_cv = crossing.x - size.width/2;
-					ld_info.data.hover.y_sp = 23;
-					ld_info.data.hover.y_cv = crossing.y - size.height/2;
+					ld_info.angle_sp = ANGLE_OFFSET;
+					ld_info.angle_cv = lines[0].angle;
+					ld_info.x_sp = X_OFFSET;
+					ld_info.x_cv = crossing.x - size.width/2;
+					ld_info.y_sp = Y_OFFSET;
+					ld_info.y_cv = crossing.y - size.height/2;
 				}
 				// detect cross on line
 				else if (line0detected == ld_all && line1detected == ld_close)
@@ -175,12 +179,12 @@ int main(int argc, char** argv)
 					ld_info.element = (int)le_cross;
 					
 					ld_info.mode = MODE_LINE_HOVER;
-					ld_info.data.hover.angle_sp = lines[0].angle;
-					ld_info.data.hover.angle_cv = 0.0;
-					ld_info.data.hover.x_sp = crossing.x;
-					ld_info.data.hover.x_cv = 0;
-					ld_info.data.hover.y_sp = crossing.y;
-					ld_info.data.hover.y_cv = 0;
+					ld_info.angle_sp = ANGLE_OFFSET;
+					ld_info.angle_cv = lines[0].angle;
+					ld_info.x_sp = X_OFFSET;
+					ld_info.x_cv = crossing.x - size.width/2;
+					ld_info.y_sp = Y_OFFSET;
+					ld_info.y_cv = crossing.y - size.height/2;
 				}
 				else if (line0detected == ld_close && line1detected == ld_all)
 				{
@@ -189,12 +193,12 @@ int main(int argc, char** argv)
 					ld_info.element = (int)le_cross;
 					
 					ld_info.mode = MODE_LINE_HOVER;
-					ld_info.data.hover.angle_sp = lines[1].angle;
-					ld_info.data.hover.angle_cv = 0.0;
-					ld_info.data.hover.x_sp = crossing.x;
-					ld_info.data.hover.x_cv = 0;
-					ld_info.data.hover.y_sp = crossing.y;
-					ld_info.data.hover.y_cv = 0;
+					ld_info.angle_sp = ANGLE_OFFSET;
+					ld_info.angle_cv = lines[0].angle;
+					ld_info.x_sp = X_OFFSET;
+					ld_info.x_cv = crossing.x - size.width/2;
+					ld_info.y_sp = Y_OFFSET;
+					ld_info.y_cv = crossing.y - size.height/2;
 				}
 				// detect corner
 				else if ((line0detected == ld_plus || line0detected == ld_minus)
@@ -232,6 +236,14 @@ int main(int argc, char** argv)
 			{
 				// line follow
 				ld_info.element = (int)le_none;
+				
+				ld_info.mode = MODE_LINE_FOLLOW;
+				ld_info.angle_sp = ANGLE_OFFSET;
+				ld_info.angle_cv = lines[0].angle;
+				ld_info.x_sp = X_OFFSET;
+				ld_info.x_cv = lines[0].location.x - size.width/2;
+				ld_info.y_sp = Y_OFFSET;
+				ld_info.y_cv = lines[0].location.y - size.height/2;
 			}
 			else
 			{
