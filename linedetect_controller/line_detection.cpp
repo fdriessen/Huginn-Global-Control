@@ -32,7 +32,9 @@ using namespace std;
 #include "serial.h"
 #include "line_detection.h"
 
-#define SERIAL 1
+// move to common.h
+#define SERIAL TRUE
+#define LIMIT_FRAME_RATE TRUE
 
 long long debut_mesure;
 long long fin_mesure;
@@ -49,21 +51,36 @@ int main(int argc, char** argv)
 	cvNamedWindow("Example3", CV_WINDOW_AUTOSIZE);
 #endif
 	
+	
+	
 #if SERIAL
 	SerialOpen();
+#endif
+
+#if DEBUG_LEVEL <= 1
+#if SERIAL
+	printf("SERIAL communication ON\n");
+#else
+	printf("SERIAL communication OFF\n");
+#endif
 #endif
 	
 #if PLATFORM == PLATFORM_x86
 	CvCapture* capture = cvCreateFileCapture(argv[1]);
 	printf("Input type = video\n\r");
 #else
+
 	CvCapture* capture = cvCreateCameraCapture(-1);
 	printf("Input type = webcam\n\r");
+/*
+	CvCapture* capture = cvCreateFileCapture("test.avi");
+	printf("Input type = video\n\r");
+	*/
 #endif
 	if (!capture) {
 		quit("cvCapture failed", 1);
 	}
-
+	
 #ifdef	WEBCAM_RESIZE
 	IplImage* img_interm = cvQueryFrame(capture);
 	IplImage* img_in = cvCreateImage(cvSize( img_interm->width / 2, img_interm->height / 2 ), img_interm->depth, img_interm->nChannels );
@@ -77,7 +94,7 @@ int main(int argc, char** argv)
 	
 	cvZero(img_pgm);
 	cvZero(img_shared);
-
+	
 	// for text:
 #if (DEBUG_LEVEL <= 1) && (PLATFORM == PLATFORM_x86)
 	char text[50];
@@ -95,13 +112,14 @@ int main(int argc, char** argv)
 
 	// for line detection
 	Mat dst, cdst;
-
+	
 	prev_ms = getTimeMillis();
 	for(;;){
 #if SERIAL
 		SerialClose();
 		SerialOpen();
 #endif
+//printf("test 1\n");
 #ifdef SHOW_WINDOW
 		if(key == 27)
 		{
@@ -132,6 +150,7 @@ int main(int argc, char** argv)
 
 			HoughLinesP(dst, vectors, 1, CV_PI/180, 50, 10, 10);
 			VectorsToLines(vectors, &lines[0], &lines[1]);
+			
 			// line with lowest angle is main line
 			if(lines[0].n > 0 && lines[1].n > 0)
 			{
@@ -210,6 +229,7 @@ int main(int argc, char** argv)
 					ld.y_cv = crossing.y - size.height/2;
 				}
 				// detect corner
+				/*
 				else if ((line0detected == ld_plus || line0detected == ld_minus)
 				         && (line1detected == ld_plus || line1detected == ld_minus))
 				{
@@ -240,6 +260,7 @@ int main(int argc, char** argv)
 				{
 					ld.element = (int)le_begin;
 				}
+				*/
 			}
 			else if(lines[0].n > 0)
 			{
@@ -259,7 +280,7 @@ int main(int argc, char** argv)
 				// no lines found
 				ld.mode = MODE_LINE_NONE;
 			}
-
+			
 			// Detect line mode
 			switch(ld.mode)
 			{
@@ -329,12 +350,20 @@ int main(int argc, char** argv)
 					rc_set.pitch = PITCH_NEUTRAL;
 					rc_set.yaw = YAW_NEUTRAL;
 				break;
+				
+				default:
+					rc_set.roll = ROLL_NEUTRAL;
+					rc_set.pitch = PITCH_NEUTRAL;
+					rc_set.yaw = YAW_NEUTRAL;
+				break;
 			}
 #if SERIAL
+
 			if(SetRcMW(fd_ser, &rc_set) < 0)
 			{
 				printf("ERROR: SetRcMW");
 			}
+
 #endif			
 #if DEBUG_LEVEL <= 1
 #if SERIAL
@@ -356,7 +385,6 @@ int main(int argc, char** argv)
 			else
 				printf("\n");
 #endif
-		
 			memset(&rc_set, sizeof(rc_set), 0);
 #if SERIAL
 			printf("%s: %4d, %4d, %4d, %4d\n", "RC get (roll, pitch, yaw, throttle)\n", rc_get.roll, rc_get.pitch, rc_get.yaw, rc_get.throttle);
@@ -389,10 +417,13 @@ int main(int argc, char** argv)
 			printf("%s \nangle=%f\nn=%d\n", "line0", lines[0].angle, lines[0].n);
 			printf("%s \nangle=%f\nn=%d\n", "line1", lines[1].angle, lines[1].n);
 #endif
+
+#if LIMIT_FRAME_RATE
 			current_ms = getTimeMillis();
 			if(current_ms - prev_ms < 200)
 				usleep((200 - (current_ms - prev_ms))*1000);
 			prev_ms = current_ms;
+#endif
 			printf("fps : %.2f\n", calculeFrameRate());
 
 #ifdef SHOW_WINDOW
@@ -406,9 +437,14 @@ int main(int argc, char** argv)
 #endif
 
 	/* free memory */
+	
 	if (capture) cvReleaseCapture(&capture);
 	if (img_in) cvReleaseImage(&img_in);
 	if (img_pgm) cvReleaseImage(&img_pgm);
+#if DEBUG_LEVEL <= 1
+	printf("exit main\n");
+#endif
+	
 	quit(NULL, 0);
 }
 
@@ -693,7 +729,7 @@ void quit(char* msg, int retval)
 	//if (img_pgm) cvReleaseImage(&img_pgm);
 		
 	/* remove the FIFO */
-	unlink(LINE_DETECT_FIFO);
+	//unlink(LINE_DETECT_FIFO);
 
 	exit(retval);
 }
