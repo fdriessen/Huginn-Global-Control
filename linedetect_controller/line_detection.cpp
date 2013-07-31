@@ -14,6 +14,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <errno.h>
+#include <signal.h>
 
 // CV includes
 #include <opencv/cv.h>
@@ -47,8 +48,24 @@ extern int fd_ser;
 
 IplImage*	img_shared;
 
+namespace {
+  sig_atomic_t user_wants_to_quit = 0;
+
+  void signal_handler(int) {
+    user_wants_to_quit = 1;
+  }
+}
+
 int main(int argc, char** argv)
 {
+	// Install signal handler
+	struct sigaction act;
+	struct sigaction oldact;
+	act.sa_handler = signal_handler;
+	sigemptyset(&act.sa_mask);
+	act.sa_flags = 0;
+	sigaction(SIGINT, &act, &oldact);
+  
 #ifdef SHOW_WINDOW
 	char key = 0;
 	cvNamedWindow("Example3", CV_WINDOW_AUTOSIZE);
@@ -109,11 +126,18 @@ int main(int argc, char** argv)
 #ifdef LOG
 	long long starttime, currenttime, elapsedtime;
 	starttime = getTimeMillis();
-
+	
+	remove("logFile.csv");
+	remove("logVideo.avi");
+	
 	FILE* pFile = fopen("logFile.csv", "a");
   	fprintf(pFile, "Time;RC roll;RC pitch;RC yaw;RC throttle;Altitude;roll;pitch;yaw;Motor fl;Motor fr;Motor bl;Motor br;Angle 0;Angle 1;Debug 0;Debug 1;Debug 2;Debug 3\n");
   	fclose(pFile);
+  	
+	// for video writing
+	CvVideoWriter *writer = cvCreateVideoWriter("logVideo.avi",CV_FOURCC('M','J','P','G'),4,size,3);
 #endif
+
 	ld_information ld;
 	rc_values rc_set;
 	rc_values rc_get;
@@ -126,7 +150,7 @@ int main(int argc, char** argv)
 	Mat dst, cdst;
 	
 	prev_ms = getTimeMillis();
-	for(;;){
+	while(!user_wants_to_quit){
 #if SERIAL
 		SerialClose();
 		SerialOpen();
@@ -448,6 +472,72 @@ int main(int argc, char** argv)
 			fprintf(pFile, "%f;%f;",lines[0].angle,lines[1].angle);
 			fprintf(pFile, "%4d;%4d;%4d;%4d\n",debug.d0,debug.d1,debug.d2,debug.d3);
   			fclose(pFile);
+  			
+  			// write frame to logVideo.avi
+  			cvtColor(bw, cdst, COLOR_GRAY2BGR);
+  			//circle(cdst, crossing, 4, Scalar(0,0,255), -1, 8, 0 );
+
+			line(cdst, lines[0].location, lines[0].location + lines[0].vector ,Scalar(255,0,0), 3, CV_AA);
+			line(cdst, lines[1].location, lines[1].location + lines[1].vector ,Scalar(0,255,0), 3, CV_AA);
+			
+			// insert rc_set graphic
+			rectangle(cdst, cvRect(10,10,50,50), Scalar(255,255,255));
+			Point logPoint1;
+			Point logPoint2;
+			switch(rc_set.roll)
+			{
+				case ROLL_LEFT:
+					logPoint1.x = 20;
+				break;
+				case ROLL_NEUTRAL:
+					logPoint1.x = 35;
+				break;
+				case ROLL_RIGHT:
+					logPoint1.x = 50;
+				break;
+				default:
+					logPoint1.x = 10;
+			}
+			switch(rc_set.pitch)
+			{
+				case PITCH_FORWARD:
+					logPoint1.y = 20;
+				break;
+				case PITCH_NEUTRAL:
+					logPoint1.y = 35;
+				break;
+				case PITCH_BACKWARD:
+					logPoint1.y = 50;
+				break;
+				default:
+					logPoint1.y = 10;
+			}
+			circle(cdst, logPoint1, 5, Scalar(0,0,255), -1, 8, 0);
+			
+			switch(rc_set.yaw)
+			{
+				case YAW_LEFT:
+					logPoint1.x = 20;
+					logPoint2.x = 20;
+				break;
+				case YAW_NEUTRAL:
+					logPoint1.x = 35;
+					logPoint2.x = 35;
+				break;
+				case YAW_RIGHT:
+					logPoint1.x = 50;
+					logPoint2.x = 50;
+				break;
+				default:
+					logPoint1.x = 10;
+					logPoint2.x = 10;
+			}
+			logPoint1.y = 70;
+			logPoint2.y = 80;
+			line(cdst, logPoint1, logPoint2, Scalar(0,0,255), 3, 8, 0);
+			
+			img_shared->imageData = (char *)cdst.data;
+  			cvWriteFrame( writer, img_shared);
 #endif
 
 #if LIMIT_FRAME_RATE
@@ -457,7 +547,7 @@ int main(int argc, char** argv)
 			prev_ms = current_ms;
 #endif
 			printf("fps : %.2f\n", calculeFrameRate());
-
+			
 #ifdef SHOW_WINDOW
 		}
 		key = cvWaitKey(33);
@@ -469,12 +559,14 @@ int main(int argc, char** argv)
 #endif
 
 	/* free memory */
-	
+#if LOG
+	cvReleaseVideoWriter( &writer );
+#endif	
 	if (capture) cvReleaseCapture(&capture);
 	if (img_in) cvReleaseImage(&img_in);
 	if (img_pgm) cvReleaseImage(&img_pgm);
 #if DEBUG_LEVEL <= 1
-	printf("exit main\n");
+	printf("\n\nexit main\n");
 #endif
 	
 	quit(NULL, 0);
