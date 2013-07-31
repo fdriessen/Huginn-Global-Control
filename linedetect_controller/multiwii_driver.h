@@ -89,6 +89,14 @@ typedef struct
 
 typedef struct
 {
+	int d0;
+	int d1;
+	int d2;
+	int d3;
+} debug_data;
+
+typedef struct
+{
 	int altitude;
 	int vario;
 } altitude_data;
@@ -99,6 +107,7 @@ int GetAltitudeMW(int fd, altitude_data *altd);
 int GetSensorMW(int fd, sensor_data *sd);
 int SetRcMW(int fd, rc_values *values);
 int GetRcMW(int fd, rc_values *rc);
+int GetDebug(int fd, debug_data *dd);
 inline void B16ToBuf(unsigned char *buf, int in);
 inline short BufToB16(unsigned char *buf);
 

@@ -299,6 +299,57 @@ int GetAltitudeMW(int fd, altitude_data *altd)
 	return 0;
 }
 
+int GetDebug(int fd, debug_data *dd)
+{
+	int data_length = 0;
+	char c = 0;
+	// send command
+	unsigned char send_buf[data_length + 6];
+	send_buf[0] = (unsigned char)'$';
+	send_buf[1] = (unsigned char)'M';
+	send_buf[2] = (unsigned char)'<';
+	send_buf[3] = data_length; // data length
+	send_buf[4] = MSP_DEBUG;
+	for(int i = 3; i < 5 + send_buf[3]; i++)
+	{
+		c ^= send_buf[i];
+	}
+	send_buf[5] = c;
+
+#ifdef DEBUG_MULTIWII
+	printf("GetDebug: sending\n");
+#endif
+	SerialWrite(send_buf, data_length + 6);
+#ifdef DEBUG_MULTIWII
+	printf("GetDebug: writen %x %x %x %x %x %x\n", send_buf[0], send_buf[1], send_buf[2], send_buf[3], send_buf[4], send_buf[5]);
+#endif
+
+	usleep(10000);
+	//read command
+	unsigned char rec_buf [100];
+	int n = SerialRead(rec_buf, 6 + 4*2);  // read up to 100 characters if ready to read
+	
+#ifdef DEBUG_MULTIWII
+	printf("GetDebug: %d bytes read from serial\n", n);
+#endif
+	
+	// check checksum
+	c = 0;
+	for(int i = 3; i < 5 + 4*2; i++)
+	{
+		c ^= rec_buf[i];
+	}
+	if(c != rec_buf[5 + 4*2])
+		return -1;
+	
+	dd->d0 = BufToB16(&rec_buf[5]);
+	dd->d1 = BufToB16(&rec_buf[7]);
+	dd->d2 = BufToB16(&rec_buf[9]);
+	dd->d3 = BufToB16(&rec_buf[11]);
+	
+	return 0;
+}
+
 int SetRcMW(int fd, rc_values *values) 
 {
 	send_buf_counter = 0;

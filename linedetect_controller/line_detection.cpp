@@ -9,6 +9,7 @@
 #include <time.h>
 #include <sys/time.h>
 #include <iostream>
+#include <fstream>
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -35,6 +36,8 @@ using namespace std;
 // move to common.h
 #define SERIAL TRUE
 #define LIMIT_FRAME_RATE TRUE
+#define WEBCAM_RESIZE TRUE
+#define LOG TRUE
 
 long long debut_mesure;
 long long fin_mesure;
@@ -103,12 +106,21 @@ int main(int argc, char** argv)
 	int thickness = 1;
 #endif
 
+#ifdef LOG
+	long long starttime, currenttime, elapsedtime;
+	starttime = getTimeMillis();
+
+	FILE* pFile = fopen("logFile.csv", "a");
+  	fprintf(pFile, "Time;RC roll;RC pitch;RC yaw;RC throttle;Altitude;roll;pitch;yaw;Motor fl;Motor fr;Motor bl;Motor br;Angle 0;Angle 1;Debug 0;Debug 1;Debug 2;Debug 3\n");
+  	fclose(pFile);
+#endif
 	ld_information ld;
 	rc_values rc_set;
 	rc_values rc_get;
 	motor_data md;
 	attitude_data attd;
 	altitude_data altd;
+	debug_data debug;
 
 	// for line detection
 	Mat dst, cdst;
@@ -384,6 +396,10 @@ int main(int argc, char** argv)
 				printf("ERROR: GetMotorMW\n");
 			else
 				printf("\n");
+			if(GetDebug(fd_ser, &debug) < 0)
+				printf("ERROR: GetDebug\n");
+			else
+				printf("\n");
 #endif
 			memset(&rc_set, sizeof(rc_set), 0);
 #if SERIAL
@@ -391,6 +407,7 @@ int main(int argc, char** argv)
 			printf("%s: %4d, %4d\n", "Altitude (altitude, vario)\n", altd.altitude, altd.vario);
 			printf("%s: %4d, %4d, %4d, %4d\n", "Attitude (roll, pitch, yaw)\n", attd.roll, attd.pitch, attd.yaw, attd.headfreemodehold);
 			printf("%s: %4d, %4d, %4d, %4d\n", "Motor (fl, fr, bl, br)\n", md.fl, md.fr, md.bl, md.br);
+
 #endif
 			// char le_strings[][50] = {"le_cross","le_corner_left","le_corner_right","le_corner_left_taken","le_corner_right_taken","le_end","le_begin","le_none","le_unknown"};
 			
@@ -416,6 +433,21 @@ int main(int argc, char** argv)
 #endif
 			printf("%s \nangle=%f\nn=%d\n", "line0", lines[0].angle, lines[0].n);
 			printf("%s \nangle=%f\nn=%d\n", "line1", lines[1].angle, lines[1].n);
+#endif
+
+#if LOG			
+			currenttime = getTimeMillis();
+			elapsedtime = currenttime - starttime;
+			
+			FILE* pFile = fopen("logFile.csv", "a");
+			fprintf(pFile, "%ld;",elapsedtime);
+  			fprintf(pFile, "%4d;%4d;%4d;%4d;",rc_get.roll,rc_get.pitch,rc_get.yaw);
+			fprintf(pFile, "%4d;",altd.altitude);
+			fprintf(pFile, "%4d;%4d;%4d;",attd.roll,attd.pitch,attd.yaw);
+			fprintf(pFile, "%4d;%4d;%4d;%4d;",md.fl,md.fr,md.bl,md.br);
+			fprintf(pFile, "%f;%f;",lines[0].angle,lines[1].angle);
+			fprintf(pFile, "%4d;%4d;%4d;%4d\n",debug.d0,debug.d1,debug.d2,debug.d3);
+  			fclose(pFile);
 #endif
 
 #if LIMIT_FRAME_RATE
