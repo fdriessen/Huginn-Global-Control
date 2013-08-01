@@ -37,8 +37,6 @@ using namespace std;
 // move to common.h
 #define SERIAL TRUE
 #define LIMIT_FRAME_RATE TRUE
-#define WEBCAM_RESIZE TRUE
-#define LOG TRUE
 
 long long debut_mesure;
 long long fin_mesure;
@@ -77,7 +75,7 @@ int main(int argc, char** argv)
 	SerialOpen();
 #endif
 
-#if DEBUG_LEVEL <= 1
+#if DEBUG_LEVEL <= 0   //Log to file
 #if SERIAL
 	printf("SERIAL communication ON\n");
 #else
@@ -123,7 +121,7 @@ int main(int argc, char** argv)
 	int thickness = 1;
 #endif
 
-#ifdef LOG
+#if DEBUG_LEVEL <= 0   //Log to file
 	long long starttime, currenttime, elapsedtime;
 	starttime = getTimeMillis();
 	
@@ -173,9 +171,9 @@ int main(int argc, char** argv)
 			Mat src = img_pgm;
 			// make edges smoother
 			//medianBlur(src,src, 3); //uneven and larger than 1
-			medianBlur(src,src, 3);
+			//medianBlur(src,src, 3);
 			// create b&w 
-			Mat bw = src > 200;
+			Mat bw = src > 230; // was 200
 			// edge detection
 			Canny(bw, dst, 50, 100, 3); //GRAY output format
 			cdst = img_in;
@@ -459,7 +457,7 @@ int main(int argc, char** argv)
 			printf("%s \nangle=%f\nn=%d\n", "line1", lines[1].angle, lines[1].n);
 #endif
 
-#if LOG			
+#if DEBUG_LEVEL <= 0   //Log to file			
 			currenttime = getTimeMillis();
 			elapsedtime = currenttime - starttime;
 			
@@ -536,6 +534,18 @@ int main(int argc, char** argv)
 			logPoint2.y = 80;
 			line(cdst, logPoint1, logPoint2, Scalar(0,0,255), 3, 8, 0);
 			
+			//insert compass
+			logPoint1 = Point(35,120);
+			logPoint2.x = 20*cos(attd.yaw*CV_PI/180);
+			logPoint2.y = -20*sin(attd.yaw*CV_PI/180);
+			line(cdst, logPoint1, (logPoint1 + logPoint2), Scalar(0,0,255), 3, 8, 0);
+			line(cdst, logPoint1, (logPoint1 - logPoint2), Scalar(255,50,50), 3, 8, 0);
+			
+			//insert QC center
+			logPoint1.x = (size.width/2)+X_OFFSET;
+			logPoint1.y = (size.height/2)+Y_OFFSET;
+			circle(cdst, logPoint1, 5, Scalar(0,255,255), -1, 8, 0);
+			
 			img_shared->imageData = (char *)cdst.data;
   			cvWriteFrame( writer, img_shared);
 #endif
@@ -559,7 +569,7 @@ int main(int argc, char** argv)
 #endif
 
 	/* free memory */
-#if LOG
+#if DEBUG_LEVEL <= 0   //Log to file
 	cvReleaseVideoWriter( &writer );
 #endif	
 	if (capture) cvReleaseCapture(&capture);
