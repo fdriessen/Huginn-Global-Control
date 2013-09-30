@@ -1,0 +1,2368 @@
+[H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -443.000
+Rho average = -221.500
+pt1_av = (125,-1017), pt2_av = (316,974)
+Distance average = 220.000
+Centre = 176.000
+Deviation = -44.000 = -12.500 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -668.000
+Rho average = -222.667
+pt1_av = (135,-1016), pt2_av = (309,977)
+Distance average = 222.000
+Centre = 176.000
+Deviation = -46.000 = -13.068 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -668.000
+Rho average = -222.667
+pt1_av = (135,-1016), pt2_av = (309,977)
+Distance average = 222.000
+Centre = 176.000
+Deviation = -46.000 = -13.068 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -668.000
+Rho average = -222.667
+pt1_av = (135,-1016), pt2_av = (309,977)
+Distance average = 222.000
+Centre = 176.000
+Deviation = -46.000 = -13.068 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -669.000
+Rho average = -223.000
+pt1_av = (135,-1016), pt2_av = (309,977)
+Distance average = 222.000
+Centre = 176.000
+Deviation = -46.000 = -13.068 [percent][H[2JLines size = 1
+Theta sum = 3.054
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -222.000
+Rho average = -222.000
+pt1_av = (134,-1016), pt2_av = (308,977)
+Distance average = 221.000
+Centre = 176.000
+Deviation = -45.000 = -12.784 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -666.000
+Rho average = -222.000
+pt1_av = (134,-1016), pt2_av = (308,977)
+Distance average = 221.000
+Centre = 176.000
+Deviation = -45.000 = -12.784 [percent][H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -439.000
+Rho average = -219.500
+pt1_av = (123,-1016), pt2_av = (314,974)
+Distance average = 218.000
+Centre = 176.000
+Deviation = -42.000 = -11.932 [percent][H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -439.000
+Rho average = -219.500
+pt1_av = (123,-1016), pt2_av = (314,974)
+Distance average = 218.000
+Centre = 176.000
+Deviation = -42.000 = -11.932 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -663.000
+Rho average = -221.000
+pt1_av = (133,-1015), pt2_av = (307,977)
+Distance average = 220.000
+Centre = 176.000
+Deviation = -44.000 = -12.500 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -662.000
+Rho average = -220.667
+pt1_av = (133,-1015), pt2_av = (307,977)
+Distance average = 220.000
+Centre = 176.000
+Deviation = -44.000 = -12.500 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -663.000
+Rho average = -221.000
+pt1_av = (133,-1015), pt2_av = (307,977)
+Distance average = 220.000
+Centre = 176.000
+Deviation = -44.000 = -12.500 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -662.000
+Rho average = -220.667
+pt1_av = (133,-1015), pt2_av = (307,977)
+Distance average = 220.000
+Centre = 176.000
+Deviation = -44.000 = -12.500 [percent][H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -438.000
+Rho average = -219.000
+pt1_av = (122,-1016), pt2_av = (314,974)
+Distance average = 218.000
+Centre = 176.000
+Deviation = -42.000 = -11.932 [percent][H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -437.000
+Rho average = -218.500
+pt1_av = (122,-1016), pt2_av = (313,974)
+Distance average = 217.000
+Centre = 176.000
+Deviation = -41.000 = -11.648 [percent][H[2JLines size = 1
+Theta sum = 3.054
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -219.000
+Rho average = -219.000
+pt1_av = (131,-1015), pt2_av = (305,977)
+Distance average = 218.000
+Centre = 176.000
+Deviation = -42.000 = -11.932 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -652.000
+Rho average = -217.333
+pt1_av = (129,-1015), pt2_av = (304,977)
+Distance average = 216.000
+Centre = 176.000
+Deviation = -40.000 = -11.364 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -646.000
+Rho average = -215.333
+pt1_av = (127,-1015), pt2_av = (302,977)
+Distance average = 214.000
+Centre = 176.000
+Deviation = -38.000 = -10.795 [percent][H[2JLines size = 1
+Theta sum = 3.054
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -212.000
+Rho average = -212.000
+pt1_av = (124,-1015), pt2_av = (298,978)
+Distance average = 211.000
+Centre = 176.000
+Deviation = -35.000 = -9.943 [percent][H[2JLines size = 2
+Theta sum = 6.126
+Theta average = 3.063
+Theta line = 1.492
+Rho sum = -425.000
+Rho average = -212.500
+pt1_av = (133,-1014), pt2_av = (290,980)
+Distance average = 211.000
+Centre = 176.000
+Deviation = -35.000 = -9.943 [percent][H[2JLines size = 1
+Theta sum = 3.054
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -205.000
+Rho average = -205.000
+pt1_av = (117,-1014), pt2_av = (291,978)
+Distance average = 204.000
+Centre = 176.000
+Deviation = -28.000 = -7.955 [percent][H[2JLines size = 3
+Theta sum = 9.198
+Theta average = 3.066
+Theta line = 1.495
+Rho sum = -627.000
+Rho average = -209.000
+pt1_av = (133,-1013), pt2_av = (284,981)
+Distance average = 208.000
+Centre = 176.000
+Deviation = -32.000 = -9.091 [percent][H[2JLines size = 2
+Theta sum = 6.126
+Theta average = 3.063
+Theta line = 1.492
+Rho sum = -397.000
+Rho average = -198.500
+pt1_av = (119,-1012), pt2_av = (276,981)
+Distance average = 197.000
+Centre = 176.000
+Deviation = -21.000 = -5.966 [percent][H[2JLines size = 1
+Theta sum = 3.054
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -189.000
+Rho average = -189.000
+pt1_av = (101,-1013), pt2_av = (275,980)
+Distance average = 188.000
+Centre = 176.000
+Deviation = -12.000 = -3.409 [percent][H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -359.000
+Rho average = -179.500
+pt1_av = (83,-1013), pt2_av = (275,978)
+Distance average = 179.000
+Centre = 176.000
+Deviation = -3.000 = -0.852 [percent][H[2JLines size = 4
+Theta sum = 12.182
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -750.000
+Rho average = -187.500
+pt1_av = (91,-1013), pt2_av = (282,977)
+Distance average = 186.000
+Centre = 176.000
+Deviation = -10.000 = -2.841 [percent][H[2JLines size = 3
+Theta sum = 9.146
+Theta average = 3.049
+Theta line = 1.478
+Rho sum = -561.000
+Rho average = -187.000
+pt1_av = (93,-1013), pt2_av = (279,978)
+Distance average = 186.000
+Centre = 176.000
+Deviation = -10.000 = -2.841 [percent][H[2JLines size = 4
+Theta sum = 12.165
+Theta average = 3.041
+Theta line = 1.470
+Rho sum = -730.000
+Rho average = -182.500
+pt1_av = (81,-1013), pt2_av = (282,977)
+Distance average = 181.000
+Centre = 176.000
+Deviation = -5.000 = -1.420 [percent][H[2JLines size = 4
+Theta sum = 12.130
+Theta average = 3.033
+Theta line = 1.462
+Rho sum = -730.000
+Rho average = -182.500
+pt1_av = (73,-1014), pt2_av = (290,974)
+Distance average = 181.000
+Centre = 176.000
+Deviation = -5.000 = -1.420 [percent][H[2JLines size = 4
+Theta sum = 12.130
+Theta average = 3.033
+Theta line = 1.462
+Rho sum = -728.000
+Rho average = -182.000
+pt1_av = (72,-1014), pt2_av = (290,974)
+Distance average = 181.000
+Centre = 176.000
+Deviation = -5.000 = -1.420 [percent][H[2JLines size = 3
+Theta sum = 9.093
+Theta average = 3.031
+Theta line = 1.460
+Rho sum = -545.000
+Rho average = -181.667
+pt1_av = (70,-1014), pt2_av = (291,974)
+Distance average = 180.000
+Centre = 176.000
+Deviation = -4.000 = -1.136 [percent][H[2JLines size = 3
+Theta sum = 9.093
+Theta average = 3.031
+Theta line = 1.460
+Rho sum = -546.000
+Rho average = -182.000
+pt1_av = (71,-1014), pt2_av = (291,974)
+Distance average = 181.000
+Centre = 176.000
+Deviation = -5.000 = -1.420 [percent][H[2JLines size = 3
+Theta sum = 9.093
+Theta average = 3.031
+Theta line = 1.460
+Rho sum = -539.000
+Rho average = -179.667
+pt1_av = (68,-1014), pt2_av = (289,974)
+Distance average = 178.000
+Centre = 176.000
+Deviation = -2.000 = -0.568 [percent][H[2JLines size = 3
+Theta sum = 9.058
+Theta average = 3.019
+Theta line = 1.449
+Rho sum = -533.000
+Rho average = -177.667
+pt1_av = (54,-1014), pt2_av = (298,971)
+Distance average = 176.000
+Centre = 176.000
+Deviation = 0.000 = 0.000 [percent][H[2JLines size = 5
+Theta sum = 15.097
+Theta average = 3.019
+Theta line = 1.449
+Rho sum = -905.000
+Rho average = -181.000
+pt1_av = (58,-1015), pt2_av = (302,970)
+Distance average = 180.000
+Centre = 176.000
+Deviation = -4.000 = -1.136 [percent][H[2JLines size = 4
+Theta sum = 12.113
+Theta average = 3.028
+Theta line = 1.457
+Rho sum = -719.000
+Rho average = -179.750
+pt1_av = (65,-1014), pt2_av = (292,973)
+Distance average = 178.000
+Centre = 176.000
+Deviation = -2.000 = -0.568 [percent][H[2JLines size = 2
+Theta sum = 6.056
+Theta average = 3.028
+Theta line = 1.457
+Rho sum = -341.000
+Rho average = -170.500
+pt1_av = (56,-1013), pt2_av = (283,974)
+Distance average = 169.000
+Centre = 176.000
+Deviation = 7.000 = 1.989 [percent][H[2JLines size = 3
+Theta sum = 9.093
+Theta average = 3.031
+Theta line = 1.460
+Rho sum = -534.000
+Rho average = -178.000
+pt1_av = (67,-1014), pt2_av = (287,974)
+Distance average = 177.000
+Centre = 176.000
+Deviation = -1.000 = -0.284 [percent][H[2JLines size = 4
+Theta sum = 12.147
+Theta average = 3.037
+Theta line = 1.466
+Rho sum = -750.000
+Rho average = -187.500
+pt1_av = (82,-1014), pt2_av = (291,975)
+Distance average = 186.000
+Centre = 176.000
+Deviation = -10.000 = -2.841 [percent][H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -374.000
+Rho average = -187.000
+pt1_av = (90,-1013), pt2_av = (282,977)
+Distance average = 186.000
+Centre = 176.000
+Deviation = -10.000 = -2.841 [percent][H[2JLines size = 3
+Theta sum = 9.093
+Theta average = 3.031
+Theta line = 1.460
+Rho sum = -508.000
+Rho average = -169.333
+pt1_av = (58,-1013), pt2_av = (279,975)
+Distance average = 168.000
+Centre = 176.000
+Deviation = 8.000 = 2.273 [percent][H[2JLines size = 4
+Theta sum = 12.147
+Theta average = 3.037
+Theta line = 1.466
+Rho sum = -753.000
+Rho average = -188.250
+pt1_av = (83,-1014), pt2_av = (292,975)
+Distance average = 187.000
+Centre = 176.000
+Deviation = -11.000 = -3.125 [percent][H[2JLines size = 3
+Theta sum = 9.093
+Theta average = 3.031
+Theta line = 1.460
+Rho sum = -528.000
+Rho average = -176.000
+pt1_av = (65,-1013), pt2_av = (285,974)
+Distance average = 175.000
+Centre = 176.000
+Deviation = 1.000 = 0.284 [percent][H[2JLines size = 0
+[H[2JLines size = 3
+Theta sum = 9.093
+Theta average = 3.031
+Theta line = 1.460
+Rho sum = -567.000
+Rho average = -189.000
+pt1_av = (78,-1015), pt2_av = (298,973)
+Distance average = 188.000
+Centre = 176.000
+Deviation = -12.000 = -3.409 [percent][H[2JLines size = 3
+Theta sum = 9.076
+Theta average = 3.025
+Theta line = 1.454
+Rho sum = -595.000
+Rho average = -198.333
+pt1_av = (81,-1016), pt2_av = (313,970)
+Distance average = 197.000
+Centre = 176.000
+Deviation = -21.000 = -5.966 [percent][H[2JLines size = 2
+Theta sum = 6.056
+Theta average = 3.028
+Theta line = 1.457
+Rho sum = -421.000
+Rho average = -210.500
+pt1_av = (96,-1017), pt2_av = (322,970)
+Distance average = 209.000
+Centre = 176.000
+Deviation = -33.000 = -9.375 [percent][H[2JLines size = 1
+Theta sum = 3.002
+Theta average = 3.002
+Theta line = 1.431
+Rho sum = -168.000
+Rho average = -168.000
+pt1_av = (27,-1014), pt2_av = (306,967)
+Distance average = 166.000
+Centre = 176.000
+Deviation = 10.000 = 2.841 [percent][H[2JLines size = 1
+Theta sum = 3.019
+Theta average = 3.019
+Theta line = 1.449
+Rho sum = -205.000
+Rho average = -205.000
+pt1_av = (82,-1018), pt2_av = (325,968)
+Distance average = 203.000
+Centre = 176.000
+Deviation = -27.000 = -7.670 [percent][H[2JLines size = 1
+Theta sum = 2.985
+Theta average = 2.985
+Theta line = 1.414
+Rho sum = -162.000
+Rho average = -162.000
+pt1_av = (4,-1013), pt2_av = (316,962)
+Distance average = 160.000
+Centre = 176.000
+Deviation = 16.000 = 4.545 [percent][H[2JLines size = 1
+Theta sum = 3.002
+Theta average = 3.002
+Theta line = 1.431
+Rho sum = -164.000
+Rho average = -164.000
+pt1_av = (23,-1013), pt2_av = (302,967)
+Distance average = 162.000
+Centre = 176.000
+Deviation = 14.000 = 3.977 [percent][H[2JLines size = 3
+Theta sum = 8.988
+Theta average = 2.996
+Theta line = 1.425
+Rho sum = -513.000
+Rho average = -171.000
+pt1_av = (24,-1014), pt2_av = (314,965)
+Distance average = 169.000
+Centre = 176.000
+Deviation = 7.000 = 1.989 [percent][H[2JLines size = 2
+Theta sum = 6.004
+Theta average = 3.002
+Theta line = 1.431
+Rho sum = -325.000
+Rho average = -162.500
+pt1_av = (22,-1013), pt2_av = (300,968)
+Distance average = 161.000
+Centre = 176.000
+Deviation = 15.000 = 4.261 [percent][H[2JLines size = 4
+Theta sum = 12.060
+Theta average = 3.015
+Theta line = 1.444
+Rho sum = -712.000
+Rho average = -178.000
+pt1_av = (50,-1014), pt2_av = (303,970)
+Distance average = 176.000
+Centre = 176.000
+Deviation = 0.000 = 0.000 [percent][H[2JLines size = 3
+Theta sum = 9.093
+Theta average = 3.031
+Theta line = 1.460
+Rho sum = -531.000
+Rho average = -177.000
+pt1_av = (66,-1013), pt2_av = (286,974)
+Distance average = 176.000
+Centre = 176.000
+Deviation = 0.000 = 0.000 [percent][H[2JLines size = 5
+Theta sum = 15.184
+Theta average = 3.037
+Theta line = 1.466
+Rho sum = -916.000
+Rho average = -183.200
+pt1_av = (78,-1014), pt2_av = (287,975)
+Distance average = 182.000
+Centre = 176.000
+Deviation = -6.000 = -1.705 [percent][H[2JLines size = 4
+Theta sum = 12.130
+Theta average = 3.033
+Theta line = 1.462
+Rho sum = -693.000
+Rho average = -173.250
+pt1_av = (63,-1013), pt2_av = (281,975)
+Distance average = 172.000
+Centre = 176.000
+Deviation = 4.000 = 1.136 [percent][H[2JLines size = 4
+Theta sum = 12.182
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -694.000
+Rho average = -173.500
+pt1_av = (77,-1012), pt2_av = (269,979)
+Distance average = 173.000
+Centre = 176.000
+Deviation = 3.000 = 0.852 [percent][H[2JLines size = 3
+Theta sum = 9.146
+Theta average = 3.049
+Theta line = 1.478
+Rho sum = -523.000
+Rho average = -174.333
+pt1_av = (81,-1012), pt2_av = (267,979)
+Distance average = 174.000
+Centre = 176.000
+Deviation = 2.000 = 0.568 [percent][H[2JLines size = 4
+Theta sum = 12.235
+Theta average = 3.059
+Theta line = 1.488
+Rho sum = -720.000
+Rho average = -180.000
+pt1_av = (97,-1011), pt2_av = (262,982)
+Distance average = 179.000
+Centre = 176.000
+Deviation = -3.000 = -0.852 [percent][H[2JLines size = 4
+Theta sum = 12.252
+Theta average = 3.063
+Theta line = 1.492
+Rho sum = -694.000
+Rho average = -173.500
+pt1_av = (95,-1011), pt2_av = (251,983)
+Distance average = 173.000
+Centre = 176.000
+Deviation = 3.000 = 0.852 [percent][H[2JLines size = 3
+Theta sum = 9.180
+Theta average = 3.060
+Theta line = 1.489
+Rho sum = -529.000
+Rho average = -176.333
+pt1_av = (94,-1011), pt2_av = (257,982)
+Distance average = 175.000
+Centre = 176.000
+Deviation = 1.000 = 0.284 [percent][H[2JLines size = 3
+Theta sum = 9.198
+Theta average = 3.066
+Theta line = 1.495
+Rho sum = -534.000
+Rho average = -178.000
+pt1_av = (102,-1011), pt2_av = (253,984)
+Distance average = 177.000
+Centre = 176.000
+Deviation = -1.000 = -0.284 [percent][H[2JLines size = 5
+Theta sum = 15.359
+Theta average = 3.072
+Theta line = 1.501
+Rho sum = -940.000
+Rho average = -188.000
+pt1_av = (118,-1011), pt2_av = (257,984)
+Distance average = 187.000
+Centre = 176.000
+Deviation = -11.000 = -3.125 [percent][H[2JLines size = 4
+Theta sum = 12.305
+Theta average = 3.076
+Theta line = 1.505
+Rho sum = -758.000
+Rho average = -189.500
+pt1_av = (124,-1010), pt2_av = (254,985)
+Distance average = 189.000
+Centre = 176.000
+Deviation = -13.000 = -3.693 [percent][H[2JLines size = 4
+Theta sum = 12.322
+Theta average = 3.081
+Theta line = 1.510
+Rho sum = -772.000
+Rho average = -193.000
+pt1_av = (132,-1010), pt2_av = (254,986)
+Distance average = 193.000
+Centre = 176.000
+Deviation = -17.000 = -4.830 [percent][H[2JLines size = 4
+Theta sum = 12.322
+Theta average = 3.081
+Theta line = 1.510
+Rho sum = -753.000
+Rho average = -188.250
+pt1_av = (127,-1010), pt2_av = (249,987)
+Distance average = 188.000
+Centre = 176.000
+Deviation = -12.000 = -3.409 [percent][H[2JLines size = 4
+Theta sum = 12.322
+Theta average = 3.081
+Theta line = 1.510
+Rho sum = -754.000
+Rho average = -188.500
+pt1_av = (127,-1010), pt2_av = (249,987)
+Distance average = 188.000
+Centre = 176.000
+Deviation = -12.000 = -3.409 [percent][H[2JLines size = 3
+Theta sum = 9.215
+Theta average = 3.072
+Theta line = 1.501
+Rho sum = -573.000
+Rho average = -191.000
+pt1_av = (121,-1011), pt2_av = (260,984)
+Distance average = 190.000
+Centre = 176.000
+Deviation = -14.000 = -3.977 [percent][H[2JLines size = 4
+Theta sum = 12.322
+Theta average = 3.081
+Theta line = 1.510
+Rho sum = -774.000
+Rho average = -193.500
+pt1_av = (132,-1010), pt2_av = (254,986)
+Distance average = 193.000
+Centre = 176.000
+Deviation = -17.000 = -4.830 [percent][H[2JLines size = 2
+Theta sum = 6.161
+Theta average = 3.081
+Theta line = 1.510
+Rho sum = -404.000
+Rho average = -202.000
+pt1_av = (141,-1010), pt2_av = (263,986)
+Distance average = 202.000
+Centre = 176.000
+Deviation = -26.000 = -7.386 [percent][H[2JLines size = 3
+Theta sum = 9.250
+Theta average = 3.083
+Theta line = 1.513
+Rho sum = -597.000
+Rho average = -199.000
+pt1_av = (141,-1010), pt2_av = (257,987)
+Distance average = 199.000
+Centre = 176.000
+Deviation = -23.000 = -6.534 [percent][H[2JLines size = 3
+Theta sum = 9.250
+Theta average = 3.083
+Theta line = 1.513
+Rho sum = -599.000
+Rho average = -199.667
+pt1_av = (141,-1010), pt2_av = (257,987)
+Distance average = 199.000
+Centre = 176.000
+Deviation = -23.000 = -6.534 [percent][H[2JLines size = 4
+Theta sum = 12.357
+Theta average = 3.089
+Theta line = 1.518
+Rho sum = -814.000
+Rho average = -203.500
+pt1_av = (151,-1009), pt2_av = (256,988)
+Distance average = 203.000
+Centre = 176.000
+Deviation = -27.000 = -7.670 [percent][H[2JLines size = 2
+Theta sum = 6.178
+Theta average = 3.089
+Theta line = 1.518
+Rho sum = -398.000
+Rho average = -199.000
+pt1_av = (146,-1009), pt2_av = (251,988)
+Distance average = 198.000
+Centre = 176.000
+Deviation = -22.000 = -6.250 [percent][H[2JLines size = 3
+Theta sum = 6.196
+Theta average = 2.065
+Theta line = 0.495
+Rho sum = -161.000
+Rho average = -53.667
+pt1_av = (-855,-522), pt2_av = (906,427)
+Distance average = 25.000
+Centre = 176.000
+Deviation = 151.000 = 42.898 [percent][H[2JLines size = 2
+Theta sum = 6.196
+Theta average = 3.098
+Theta line = 1.527
+Rho sum = -407.000
+Rho average = -203.500
+pt1_av = (160,-1008), pt2_av = (247,990)
+Distance average = 203.000
+Centre = 176.000
+Deviation = -27.000 = -7.670 [percent][H[2JLines size = 2
+Theta sum = 3.107
+Theta average = 1.553
+Theta line = -0.017
+Rho sum = 35.000
+Rho average = 17.500
+pt1_av = (-1000,35), pt2_av = (1000,0)
+Distance average = 0.000
+Centre = 176.000
+Deviation = 176.000 = 50.000 [percent][H[2JLines size = 5
+Theta sum = 12.427
+Theta average = 2.485
+Theta line = 0.915
+Rho sum = -616.000
+Rho average = -123.200
+pt1_av = (-513,-867), pt2_av = (708,717)
+Distance average = 97.000
+Centre = 176.000
+Deviation = 79.000 = 22.443 [percent][H[2JLines size = 4
+Theta sum = 6.248
+Theta average = 1.562
+Theta line = -0.009
+Rho sum = 16.000
+Rho average = 4.000
+pt1_av = (-1000,13), pt2_av = (1000,-5)
+Distance average = 0.000
+Centre = 176.000
+Deviation = 176.000 = 50.000 [percent][H[2JLines size = 3
+Theta sum = 3.142
+Theta average = 1.047
+Theta line = -0.524
+Rho sum = 224.000
+Rho average = 74.667
+pt1_av = (-829,565), pt2_av = (903,-435)
+Distance average = 37.000
+Centre = 176.000
+Deviation = 139.000 = 39.489 [percent][H[2JLines size = 5
+Theta sum = 6.266
+Theta average = 1.253
+Theta line = -0.318
+Rho sum = 249.000
+Rho average = 49.800
+pt1_av = (-934,360), pt2_av = (966,-265)
+Distance average = 16.000
+Centre = 176.000
+Deviation = 160.000 = 45.455 [percent][H[2JLines size = 6
+Theta sum = 9.372
+Theta average = 1.562
+Theta line = -0.009
+Rho sum = 15.000
+Rho average = 2.500
+pt1_av = (-1000,11), pt2_av = (1000,-6)
+Distance average = 0.000
+Centre = 176.000
+Deviation = 176.000 = 50.000 [percent][H[2JLines size = 5
+Theta sum = 6.266
+Theta average = 1.253
+Theta line = -0.318
+Rho sum = 250.000
+Rho average = 50.000
+pt1_av = (-934,360), pt2_av = (966,-265)
+Distance average = 16.000
+Centre = 176.000
+Deviation = 160.000 = 45.455 [percent][H[2JLines size = 7
+Theta sum = 9.355
+Theta average = 1.336
+Theta line = -0.234
+Rho sum = 250.000
+Rho average = 35.714
+pt1_av = (-964,267), pt2_av = (981,-197)
+Distance average = 8.000
+Centre = 176.000
+Deviation = 168.000 = 47.727 [percent][H[2JLines size = 6
+Theta sum = 9.372
+Theta average = 1.562
+Theta line = -0.009
+Rho sum = 40.000
+Rho average = 6.667
+pt1_av = (-1000,15), pt2_av = (1000,-2)
+Distance average = 0.000
+Centre = 176.000
+Deviation = 176.000 = 50.000 [percent][H[2JLines size = 5
+Theta sum = 9.355
+Theta average = 1.871
+Theta line = 0.300
+Rho sum = -197.000
+Rho average = -39.400
+pt1_av = (-944,-333), pt2_av = (967,258)
+Distance average = 11.000
+Centre = 176.000
+Deviation = 165.000 = 46.875 [percent][H[2JLines size = 6
+Theta sum = 9.355
+Theta average = 1.559
+Theta line = -0.012
+Rho sum = 16.000
+Rho average = 2.667
+pt1_av = (-1000,14), pt2_av = (1000,-9)
+Distance average = 0.000
+Centre = 176.000
+Deviation = 176.000 = 50.000 [percent][H[2JLines size = 7
+Theta sum = 9.355
+Theta average = 1.336
+Theta line = -0.234
+Rho sum = 248.000
+Rho average = 35.429
+pt1_av = (-964,267), pt2_av = (981,-198)
+Distance average = 8.000
+Centre = 176.000
+Deviation = 168.000 = 47.727 [percent][H[2JLines size = 5
+Theta sum = 9.355
+Theta average = 1.871
+Theta line = 0.300
+Rho sum = -189.000
+Rho average = -37.800
+pt1_av = (-944,-332), pt2_av = (966,260)
+Distance average = 11.000
+Centre = 176.000
+Deviation = 165.000 = 46.875 [percent][H[2JLines size = 8
+Theta sum = 12.479
+Theta average = 1.560
+Theta line = -0.011
+Rho sum = 1.000
+Rho average = 0.125
+pt1_av = (-1000,11), pt2_av = (1000,-11)
+Distance average = 0.000
+Centre = 176.000
+Deviation = 176.000 = 50.000 [percent][H[2JLines size = 5
+Theta sum = 12.479
+Theta average = 2.496
+Theta line = 0.925
+Rho sum = -614.000
+Rho average = -122.800
+pt1_av = (-504,-873), pt2_av = (700,725)
+Distance average = 98.000
+Centre = 176.000
+Deviation = 78.000 = 22.159 [percent][H[2JLines size = 4
+Theta sum = 9.355
+Theta average = 2.339
+Theta line = 0.768
+Rho sum = -414.000
+Rho average = -103.500
+pt1_av = (-647,-769), pt2_av = (791,620)
+Distance average = 72.000
+Centre = 176.000
+Deviation = 104.000 = 29.545 [percent][H[2JLines size = 4
+Theta sum = 9.355
+Theta average = 2.339
+Theta line = 0.768
+Rho sum = -386.000
+Rho average = -96.500
+pt1_av = (-652,-764), pt2_av = (786,625)
+Distance average = 67.000
+Centre = 176.000
+Deviation = 109.000 = 30.966 [percent][H[2JLines size = 3
+Theta sum = 6.231
+Theta average = 2.077
+Theta line = 0.506
+Rho sum = -192.000
+Rho average = -64.000
+pt1_av = (-844,-541), pt2_av = (906,429)
+Distance average = 31.000
+Centre = 176.000
+Deviation = 145.000 = 41.193 [percent][H[2JLines size = 6
+Theta sum = 9.372
+Theta average = 1.562
+Theta line = -0.009
+Rho sum = 13.000
+Rho average = 2.167
+pt1_av = (-1000,11), pt2_av = (1000,-7)
+Distance average = 0.000
+Centre = 176.000
+Deviation = 176.000 = 50.000 [percent][H[2JLines size = 5
+Theta sum = 12.462
+Theta average = 2.492
+Theta line = 0.922
+Rho sum = -579.000
+Rho average = -115.800
+pt1_av = (-512,-867), pt2_av = (697,727)
+Distance average = 92.000
+Centre = 176.000
+Deviation = 84.000 = 23.864 [percent][H[2JLines size = 5
+Theta sum = 12.462
+Theta average = 2.492
+Theta line = 0.922
+Rho sum = -577.000
+Rho average = -115.400
+pt1_av = (-513,-866), pt2_av = (697,727)
+Distance average = 92.000
+Centre = 176.000
+Deviation = 84.000 = 23.864 [percent][H[2JLines size = 5
+Theta sum = 9.372
+Theta average = 1.874
+Theta line = 0.304
+Rho sum = -183.000
+Rho average = -36.600
+pt1_av = (-943,-334), pt2_av = (965,264)
+Distance average = 11.000
+Centre = 176.000
+Deviation = 165.000 = 46.875 [percent][H[2JLines size = 4
+Theta sum = 6.231
+Theta average = 1.558
+Theta line = -0.013
+Rho sum = 33.000
+Rho average = 8.250
+pt1_av = (-1000,21), pt2_av = (1000,-5)
+Distance average = 0.000
+Centre = 176.000
+Deviation = 176.000 = 50.000 [percent][H[2JLines size = 5
+Theta sum = 6.266
+Theta average = 1.253
+Theta line = -0.318
+Rho sum = 227.000
+Rho average = 45.400
+pt1_av = (-936,355), pt2_av = (964,-269)
+Distance average = 14.000
+Centre = 176.000
+Deviation = 162.000 = 46.023 [percent][H[2JLines size = 4
+Theta sum = 6.231
+Theta average = 1.558
+Theta line = -0.013
+Rho sum = 35.000
+Rho average = 8.750
+pt1_av = (-1000,22), pt2_av = (1000,-4)
+Distance average = 0.000
+Centre = 176.000
+Deviation = 176.000 = 50.000 [percent][H[2JLines size = 5
+Theta sum = 6.266
+Theta average = 1.253
+Theta line = -0.318
+Rho sum = 254.000
+Rho average = 50.800
+pt1_av = (-934,361), pt2_av = (966,-264)
+Distance average = 16.000
+Centre = 176.000
+Deviation = 160.000 = 45.455 [percent][H[2JLines size = 4
+Theta sum = 6.266
+Theta average = 1.566
+Theta line = -0.004
+Rho sum = 34.000
+Rho average = 8.500
+pt1_av = (-1000,13), pt2_av = (1000,4)
+Distance average = 0.000
+Centre = 176.000
+Deviation = 176.000 = 50.000 [percent][H[2JLines size = 5
+Theta sum = 9.372
+Theta average = 1.874
+Theta line = 0.304
+Rho sum = -156.000
+Rho average = -31.200
+pt1_av = (-945,-329), pt2_av = (964,269)
+Distance average = 9.000
+Centre = 176.000
+Deviation = 167.000 = 47.443 [percent][H[2JLines size = 6
+Theta sum = 9.355
+Theta average = 1.559
+Theta line = -0.012
+Rho sum = 37.000
+Rho average = 6.167
+pt1_av = (-1000,18), pt2_av = (1000,-5)
+Distance average = 0.000
+Centre = 176.000
+Deviation = 176.000 = 50.000 [percent][H[2JLines size = 4
+Theta sum = 6.248
+Theta average = 1.562
+Theta line = -0.009
+Rho sum = 36.000
+Rho average = 9.000
+pt1_av = (-1000,18), pt2_av = (1000,0)
+Distance average = 0.000
+Centre = 176.000
+Deviation = 176.000 = 50.000 [percent][H[2JLines size = 3
+Theta sum = 6.231
+Theta average = 2.077
+Theta line = 0.506
+Rho sum = -154.000
+Rho average = -51.333
+pt1_av = (-850,-530), pt2_av = (900,440)
+Distance average = 25.000
+Centre = 176.000
+Deviation = 151.000 = 42.898 [percent][H[2JLines size = 4
+Theta sum = 9.338
+Theta average = 2.334
+Theta line = 0.764
+Rho sum = -369.000
+Rho average = -92.250
+pt1_av = (-659,-758), pt2_av = (786,625)
+Distance average = 63.000
+Centre = 176.000
+Deviation = 113.000 = 32.102 [percent][H[2JLines size = 3
+Theta sum = 6.231
+Theta average = 2.077
+Theta line = 0.506
+Rho sum = -182.000
+Rho average = -60.667
+pt1_av = (-845,-538), pt2_av = (904,432)
+Distance average = 29.000
+Centre = 176.000
+Deviation = 147.000 = 41.761 [percent][H[2JLines size = 2
+Theta sum = 6.196
+Theta average = 3.098
+Theta line = 1.527
+Rho sum = -365.000
+Rho average = -182.500
+pt1_av = (139,-1007), pt2_av = (226,991)
+Distance average = 182.000
+Centre = 176.000
+Deviation = -6.000 = -1.705 [percent][H[2JLines size = 3
+Theta sum = 9.303
+Theta average = 3.101
+Theta line = 1.530
+Rho sum = -572.000
+Rho average = -190.667
+pt1_av = (150,-1007), pt2_av = (231,991)
+Distance average = 190.000
+Centre = 176.000
+Deviation = -14.000 = -3.977 [percent][H[2JLines size = 2
+Theta sum = 6.196
+Theta average = 3.098
+Theta line = 1.527
+Rho sum = -361.000
+Rho average = -180.500
+pt1_av = (137,-1007), pt2_av = (224,991)
+Distance average = 180.000
+Centre = 176.000
+Deviation = -4.000 = -1.136 [percent][H[2JLines size = 5
+Theta sum = 12.374
+Theta average = 2.475
+Theta line = 0.904
+Rho sum = -534.000
+Rho average = -106.800
+pt1_av = (-534,-852), pt2_av = (702,720)
+Distance average = 84.000
+Centre = 176.000
+Deviation = 92.000 = 26.136 [percent][H[2JLines size = 3
+Theta sum = 6.213
+Theta average = 2.071
+Theta line = 0.500
+Rho sum = -146.000
+Rho average = -48.667
+pt1_av = (-854,-522), pt2_av = (901,437)
+Distance average = 23.000
+Centre = 176.000
+Deviation = 153.000 = 43.466 [percent][H[2JLines size = 5
+Theta sum = 12.427
+Theta average = 2.485
+Theta line = 0.915
+Rho sum = -549.000
+Rho average = -109.800
+pt1_av = (-523,-859), pt2_av = (697,725)
+Distance average = 87.000
+Centre = 176.000
+Deviation = 89.000 = 25.284 [percent][H[2JLines size = 3
+Theta sum = 6.231
+Theta average = 2.077
+Theta line = 0.506
+Rho sum = -154.000
+Rho average = -51.333
+pt1_av = (-850,-530), pt2_av = (900,440)
+Distance average = 25.000
+Centre = 176.000
+Deviation = 151.000 = 42.898 [percent][H[2JLines size = 4
+Theta sum = 3.142
+Theta average = 0.785
+Theta line = -0.785
+Rho sum = 416.000
+Rho average = 104.000
+pt1_av = (-634,781), pt2_av = (781,-634)
+Distance average = 73.000
+Centre = 176.000
+Deviation = 103.000 = 29.261 [percent][H[2JLines size = 5
+Theta sum = 6.248
+Theta average = 1.250
+Theta line = -0.321
+Rho sum = 223.000
+Rho average = 44.600
+pt1_av = (-935,358), pt2_av = (963,-273)
+Distance average = 14.000
+Centre = 176.000
+Deviation = 162.000 = 46.023 [percent][H[2JLines size = 4
+Theta sum = 3.142
+Theta average = 0.785
+Theta line = -0.785
+Rho sum = 412.000
+Rho average = 103.000
+pt1_av = (-634,780), pt2_av = (780,-634)
+Distance average = 73.000
+Centre = 176.000
+Deviation = 103.000 = 29.261 [percent][H[2JLines size = 5
+Theta sum = 3.142
+Theta average = 0.628
+Theta line = -0.942
+Rho sum = 631.000
+Rho average = 126.200
+pt1_av = (-486,883), pt2_av = (690,-735)
+Distance average = 102.000
+Centre = 176.000
+Deviation = 74.000 = 21.023 [percent][H[2JLines size = 3
+Theta sum = 0.052
+Theta average = 0.017
+Theta line = -1.553
+Rho sum = 607.000
+Rho average = 202.333
+pt1_av = (185,1003), pt2_av = (220,-996)
+Distance average = 202.000
+Centre = 176.000
+Deviation = -26.000 = -7.386 [percent][H[2JLines size = 4
+Theta sum = 0.070
+Theta average = 0.017
+Theta line = -1.553
+Rho sum = 781.000
+Rho average = 195.250
+pt1_av = (178,1003), pt2_av = (213,-996)
+Distance average = 195.000
+Centre = 176.000
+Deviation = -19.000 = -5.398 [percent][H[2JLines size = 3
+Theta sum = 0.052
+Theta average = 0.017
+Theta line = -1.553
+Rho sum = 612.000
+Rho average = 204.000
+pt1_av = (187,1003), pt2_av = (221,-996)
+Distance average = 204.000
+Centre = 176.000
+Deviation = -28.000 = -7.955 [percent][H[2JLines size = 1
+Theta sum = 3.124
+Theta average = 3.124
+Theta line = 1.553
+Rho sum = -192.000
+Rho average = -192.000
+pt1_av = (175,-1003), pt2_av = (209,996)
+Distance average = 192.000
+Centre = 176.000
+Deviation = -16.000 = -4.545 [percent][H[2JLines size = 2
+Theta sum = 0.052
+Theta average = 0.026
+Theta line = -1.545
+Rho sum = 422.000
+Rho average = 211.000
+pt1_av = (185,1005), pt2_av = (237,-994)
+Distance average = 211.000
+Centre = 176.000
+Deviation = -35.000 = -9.943 [percent][H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 1
+Theta sum = 0.000
+Theta average = 0.000
+Theta line = -1.571
+Rho sum = 194.000
+Rho average = 194.000
+pt1_av = (194,1000), pt2_av = (194,-1000)
+Distance average = 194.000
+Centre = 176.000
+Deviation = -18.000 = -5.114 [percent][H[2JLines size = 1
+Theta sum = 3.124
+Theta average = 3.124
+Theta line = 1.553
+Rho sum = -191.000
+Rho average = -191.000
+pt1_av = (174,-1003), pt2_av = (208,997)
+Distance average = 191.000
+Centre = 176.000
+Deviation = -15.000 = -4.261 [percent][H[2JLines size = 2
+Theta sum = 0.017
+Theta average = 0.009
+Theta line = -1.562
+Rho sum = 390.000
+Rho average = 195.000
+pt1_av = (186,1002), pt2_av = (204,-998)
+Distance average = 195.000
+Centre = 176.000
+Deviation = -19.000 = -5.398 [percent][H[2JLines size = 1
+Theta sum = 0.000
+Theta average = 0.000
+Theta line = -1.571
+Rho sum = 192.000
+Rho average = 192.000
+pt1_av = (192,1000), pt2_av = (192,-1000)
+Distance average = 192.000
+Centre = 176.000
+Deviation = -16.000 = -4.545 [percent][H[2JLines size = 1
+Theta sum = 0.000
+Theta average = 0.000
+Theta line = -1.571
+Rho sum = 192.000
+Rho average = 192.000
+pt1_av = (192,1000), pt2_av = (192,-1000)
+Distance average = 192.000
+Centre = 176.000
+Deviation = -16.000 = -4.545 [percent][H[2JLines size = 0
+[H[2JLines size = 1
+Theta sum = 3.124
+Theta average = 3.124
+Theta line = 1.553
+Rho sum = -189.000
+Rho average = -189.000
+pt1_av = (172,-1003), pt2_av = (206,997)
+Distance average = 189.000
+Centre = 176.000
+Deviation = -13.000 = -3.693 [percent][H[2JLines size = 1
+Theta sum = 3.124
+Theta average = 3.124
+Theta line = 1.553
+Rho sum = -189.000
+Rho average = -189.000
+pt1_av = (172,-1003), pt2_av = (206,997)
+Distance average = 189.000
+Centre = 176.000
+Deviation = -13.000 = -3.693 [percent][H[2JLines size = 2
+Theta sum = 0.000
+Theta average = 0.000
+Theta line = -1.571
+Rho sum = 383.000
+Rho average = 191.500
+pt1_av = (192,1000), pt2_av = (192,-1000)
+Distance average = 192.000
+Centre = 176.000
+Deviation = -16.000 = -4.545 [percent][H[2JLines size = 3
+Theta sum = 0.000
+Theta average = 0.000
+Theta line = -1.571
+Rho sum = 600.000
+Rho average = 200.000
+pt1_av = (200,1000), pt2_av = (200,-1000)
+Distance average = 200.000
+Centre = 176.000
+Deviation = -24.000 = -6.818 [percent][H[2JLines size = 1
+Theta sum = 0.000
+Theta average = 0.000
+Theta line = -1.571
+Rho sum = 190.000
+Rho average = 190.000
+pt1_av = (190,1000), pt2_av = (190,-1000)
+Distance average = 190.000
+Centre = 176.000
+Deviation = -14.000 = -3.977 [percent][H[2JLines size = 3
+Theta sum = 0.000
+Theta average = 0.000
+Theta line = -1.571
+Rho sum = 594.000
+Rho average = 198.000
+pt1_av = (198,1000), pt2_av = (198,-1000)
+Distance average = 198.000
+Centre = 176.000
+Deviation = -22.000 = -6.250 [percent][H[2JLines size = 3
+Theta sum = 0.000
+Theta average = 0.000
+Theta line = -1.571
+Rho sum = 594.000
+Rho average = 198.000
+pt1_av = (198,1000), pt2_av = (198,-1000)
+Distance average = 198.000
+Centre = 176.000
+Deviation = -22.000 = -6.250 [percent][H[2JLines size = 3
+Theta sum = 0.000
+Theta average = 0.000
+Theta line = -1.571
+Rho sum = 594.000
+Rho average = 198.000
+pt1_av = (198,1000), pt2_av = (198,-1000)
+Distance average = 198.000
+Centre = 176.000
+Deviation = -22.000 = -6.250 [percent][H[2JLines size = 1
+Theta sum = 0.000
+Theta average = 0.000
+Theta line = -1.571
+Rho sum = 215.000
+Rho average = 215.000
+pt1_av = (215,1000), pt2_av = (215,-1000)
+Distance average = 215.000
+Centre = 176.000
+Deviation = -39.000 = -11.080 [percent][H[2JLines size = 0
+[H[2JLines size = 1
+Theta sum = 0.000
+Theta average = 0.000
+Theta line = -1.571
+Rho sum = 213.000
+Rho average = 213.000
+pt1_av = (213,1000), pt2_av = (213,-1000)
+Distance average = 213.000
+Centre = 176.000
+Deviation = -37.000 = -10.511 [percent][H[2JLines size = 0
+[H[2JLines size = 1
+Theta sum = 0.000
+Theta average = 0.000
+Theta line = -1.571
+Rho sum = 208.000
+Rho average = 208.000
+pt1_av = (208,1000), pt2_av = (208,-1000)
+Distance average = 208.000
+Centre = 176.000
+Deviation = -32.000 = -9.091 [percent][H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 0
+[H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -669.000
+Rho average = -223.000
+pt1_av = (135,-1016), pt2_av = (309,977)
+Distance average = 222.000
+Centre = 176.000
+Deviation = -46.000 = -13.068 [percent][H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -443.000
+Rho average = -221.500
+pt1_av = (125,-1017), pt2_av = (316,974)
+Distance average = 220.000
+Centre = 176.000
+Deviation = -44.000 = -12.500 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -668.000
+Rho average = -222.667
+pt1_av = (135,-1016), pt2_av = (309,977)
+Distance average = 222.000
+Centre = 176.000
+Deviation = -46.000 = -13.068 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -668.000
+Rho average = -222.667
+pt1_av = (135,-1016), pt2_av = (309,977)
+Distance average = 222.000
+Centre = 176.000
+Deviation = -46.000 = -13.068 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -668.000
+Rho average = -222.667
+pt1_av = (135,-1016), pt2_av = (309,977)
+Distance average = 222.000
+Centre = 176.000
+Deviation = -46.000 = -13.068 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -669.000
+Rho average = -223.000
+pt1_av = (135,-1016), pt2_av = (309,977)
+Distance average = 222.000
+Centre = 176.000
+Deviation = -46.000 = -13.068 [percent][H[2JLines size = 1
+Theta sum = 3.054
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -222.000
+Rho average = -222.000
+pt1_av = (134,-1016), pt2_av = (308,977)
+Distance average = 221.000
+Centre = 176.000
+Deviation = -45.000 = -12.784 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -666.000
+Rho average = -222.000
+pt1_av = (134,-1016), pt2_av = (308,977)
+Distance average = 221.000
+Centre = 176.000
+Deviation = -45.000 = -12.784 [percent][H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -439.000
+Rho average = -219.500
+pt1_av = (123,-1016), pt2_av = (314,974)
+Distance average = 218.000
+Centre = 176.000
+Deviation = -42.000 = -11.932 [percent][H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -439.000
+Rho average = -219.500
+pt1_av = (123,-1016), pt2_av = (314,974)
+Distance average = 218.000
+Centre = 176.000
+Deviation = -42.000 = -11.932 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -663.000
+Rho average = -221.000
+pt1_av = (133,-1015), pt2_av = (307,977)
+Distance average = 220.000
+Centre = 176.000
+Deviation = -44.000 = -12.500 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -662.000
+Rho average = -220.667
+pt1_av = (133,-1015), pt2_av = (307,977)
+Distance average = 220.000
+Centre = 176.000
+Deviation = -44.000 = -12.500 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -663.000
+Rho average = -221.000
+pt1_av = (133,-1015), pt2_av = (307,977)
+Distance average = 220.000
+Centre = 176.000
+Deviation = -44.000 = -12.500 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -662.000
+Rho average = -220.667
+pt1_av = (133,-1015), pt2_av = (307,977)
+Distance average = 220.000
+Centre = 176.000
+Deviation = -44.000 = -12.500 [percent][H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -438.000
+Rho average = -219.000
+pt1_av = (122,-1016), pt2_av = (314,974)
+Distance average = 218.000
+Centre = 176.000
+Deviation = -42.000 = -11.932 [percent][H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -437.000
+Rho average = -218.500
+pt1_av = (122,-1016), pt2_av = (313,974)
+Distance average = 217.000
+Centre = 176.000
+Deviation = -41.000 = -11.648 [percent][H[2JLines size = 1
+Theta sum = 3.054
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -219.000
+Rho average = -219.000
+pt1_av = (131,-1015), pt2_av = (305,977)
+Distance average = 218.000
+Centre = 176.000
+Deviation = -42.000 = -11.932 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -652.000
+Rho average = -217.333
+pt1_av = (129,-1015), pt2_av = (304,977)
+Distance average = 216.000
+Centre = 176.000
+Deviation = -40.000 = -11.364 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -646.000
+Rho average = -215.333
+pt1_av = (127,-1015), pt2_av = (302,977)
+Distance average = 214.000
+Centre = 176.000
+Deviation = -38.000 = -10.795 [percent][H[2JLines size = 1
+Theta sum = 3.054
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -212.000
+Rho average = -212.000
+pt1_av = (124,-1015), pt2_av = (298,978)
+Distance average = 211.000
+Centre = 176.000
+Deviation = -35.000 = -9.943 [percent][H[2JLines size = 2
+Theta sum = 6.126
+Theta average = 3.063
+Theta line = 1.492
+Rho sum = -425.000
+Rho average = -212.500
+pt1_av = (133,-1014), pt2_av = (290,980)
+Distance average = 211.000
+Centre = 176.000
+Deviation = -35.000 = -9.943 [percent][H[2JLines size = 1
+Theta sum = 3.054
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -205.000
+Rho average = -205.000
+pt1_av = (117,-1014), pt2_av = (291,978)
+Distance average = 204.000
+Centre = 176.000
+Deviation = -28.000 = -7.955 [percent][H[2JLines size = 3
+Theta sum = 9.198
+Theta average = 3.066
+Theta line = 1.495
+Rho sum = -627.000
+Rho average = -209.000
+pt1_av = (133,-1013), pt2_av = (284,981)
+Distance average = 208.000
+Centre = 176.000
+Deviation = -32.000 = -9.091 [percent][H[2JLines size = 2
+Theta sum = 6.126
+Theta average = 3.063
+Theta line = 1.492
+Rho sum = -397.000
+Rho average = -198.500
+pt1_av = (119,-1012), pt2_av = (276,981)
+Distance average = 197.000
+Centre = 176.000
+Deviation = -21.000 = -5.966 [percent][H[2JLines size = 1
+Theta sum = 3.054
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -189.000
+Rho average = -189.000
+pt1_av = (101,-1013), pt2_av = (275,980)
+Distance average = 188.000
+Centre = 176.000
+Deviation = -12.000 = -3.409 [percent][H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -359.000
+Rho average = -179.500
+pt1_av = (83,-1013), pt2_av = (275,978)
+Distance average = 179.000
+Centre = 176.000
+Deviation = -3.000 = -0.852 [percent][H[2JLines size = 4
+Theta sum = 12.182
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -750.000
+Rho average = -187.500
+pt1_av = (91,-1013), pt2_av = (282,977)
+Distance average = 186.000
+Centre = 176.000
+Deviation = -10.000 = -2.841 [percent][H[2JLines size = 3
+Theta sum = 9.146
+Theta average = 3.049
+Theta line = 1.478
+Rho sum = -561.000
+Rho average = -187.000
+pt1_av = (93,-1013), pt2_av = (279,978)
+Distance average = 186.000
+Centre = 176.000
+Deviation = -10.000 = -2.841 [percent][H[2JLines size = 4
+Theta sum = 12.165
+Theta average = 3.041
+Theta line = 1.470
+Rho sum = -730.000
+Rho average = -182.500
+pt1_av = (81,-1013), pt2_av = (282,977)
+Distance average = 181.000
+Centre = 176.000
+Deviation = -5.000 = -1.420 [percent][H[2JLines size = 4
+Theta sum = 12.130
+Theta average = 3.033
+Theta line = 1.462
+Rho sum = -730.000
+Rho average = -182.500
+pt1_av = (73,-1014), pt2_av = (290,974)
+Distance average = 181.000
+Centre = 176.000
+Deviation = -5.000 = -1.420 [percent][H[2JLines size = 4
+Theta sum = 12.130
+Theta average = 3.033
+Theta line = 1.462
+Rho sum = -728.000
+Rho average = -182.000
+pt1_av = (72,-1014), pt2_av = (290,974)
+Distance average = 181.000
+Centre = 176.000
+Deviation = -5.000 = -1.420 [percent][H[2JLines size = 3
+Theta sum = 9.093
+Theta average = 3.031
+Theta line = 1.460
+Rho sum = -545.000
+Rho average = -181.667
+pt1_av = (70,-1014), pt2_av = (291,974)
+Distance average = 180.000
+Centre = 176.000
+Deviation = -4.000 = -1.136 [percent][H[2JLines size = 3
+Theta sum = 9.093
+Theta average = 3.031
+Theta line = 1.460
+Rho sum = -546.000
+Rho average = -182.000
+pt1_av = (71,-1014), pt2_av = (291,974)
+Distance average = 181.000
+Centre = 176.000
+Deviation = -5.000 = -1.420 [percent][H[2JLines size = 3
+Theta sum = 9.093
+Theta average = 3.031
+Theta line = 1.460
+Rho sum = -539.000
+Rho average = -179.667
+pt1_av = (68,-1014), pt2_av = (289,974)
+Distance average = 178.000
+Centre = 176.000
+Deviation = -2.000 = -0.568 [percent][H[2JLines size = 3
+Theta sum = 9.058
+Theta average = 3.019
+Theta line = 1.449
+Rho sum = -533.000
+Rho average = -177.667
+pt1_av = (54,-1014), pt2_av = (298,971)
+Distance average = 176.000
+Centre = 176.000
+Deviation = 0.000 = 0.000 [percent][H[2JLines size = 5
+Theta sum = 15.097
+Theta average = 3.019
+Theta line = 1.449
+Rho sum = -905.000
+Rho average = -181.000
+pt1_av = (58,-1015), pt2_av = (302,970)
+Distance average = 180.000
+Centre = 176.000
+Deviation = -4.000 = -1.136 [percent][H[2JLines size = 4
+Theta sum = 12.113
+Theta average = 3.028
+Theta line = 1.457
+Rho sum = -719.000
+Rho average = -179.750
+pt1_av = (65,-1014), pt2_av = (292,973)
+Distance average = 178.000
+Centre = 176.000
+Deviation = -2.000 = -0.568 [percent][H[2JLines size = 2
+Theta sum = 6.056
+Theta average = 3.028
+Theta line = 1.457
+Rho sum = -341.000
+Rho average = -170.500
+pt1_av = (56,-1013), pt2_av = (283,974)
+Distance average = 169.000
+Centre = 176.000
+Deviation = 7.000 = 1.989 [percent][H[2JLines size = 3
+Theta sum = 9.093
+Theta average = 3.031
+Theta line = 1.460
+Rho sum = -534.000
+Rho average = -178.000
+pt1_av = (67,-1014), pt2_av = (287,974)
+Distance average = 177.000
+Centre = 176.000
+Deviation = -1.000 = -0.284 [percent][H[2JLines size = 4
+Theta sum = 12.147
+Theta average = 3.037
+Theta line = 1.466
+Rho sum = -750.000
+Rho average = -187.500
+pt1_av = (82,-1014), pt2_av = (291,975)
+Distance average = 186.000
+Centre = 176.000
+Deviation = -10.000 = -2.841 [percent][H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -374.000
+Rho average = -187.000
+pt1_av = (90,-1013), pt2_av = (282,977)
+Distance average = 186.000
+Centre = 176.000
+Deviation = -10.000 = -2.841 [percent][H[2JLines size = 3
+Theta sum = 9.093
+Theta average = 3.031
+Theta line = 1.460
+Rho sum = -508.000
+Rho average = -169.333
+pt1_av = (58,-1013), pt2_av = (279,975)
+Distance average = 168.000
+Centre = 176.000
+Deviation = 8.000 = 2.273 [percent][H[2JLines size = 4
+Theta sum = 12.147
+Theta average = 3.037
+Theta line = 1.466
+Rho sum = -753.000
+Rho average = -188.250
+pt1_av = (83,-1014), pt2_av = (292,975)
+Distance average = 187.000
+Centre = 176.000
+Deviation = -11.000 = -3.125 [percent][H[2JLines size = 3
+Theta sum = 9.093
+Theta average = 3.031
+Theta line = 1.460
+Rho sum = -528.000
+Rho average = -176.000
+pt1_av = (65,-1013), pt2_av = (285,974)
+Distance average = 175.000
+Centre = 176.000
+Deviation = 1.000 = 0.284 [percent][H[2JLines size = 0
+[H[2JLines size = 3
+Theta sum = 9.093
+Theta average = 3.031
+Theta line = 1.460
+Rho sum = -567.000
+Rho average = -189.000
+pt1_av = (78,-1015), pt2_av = (298,973)
+Distance average = 188.000
+Centre = 176.000
+Deviation = -12.000 = -3.409 [percent][H[2JLines size = 3
+Theta sum = 9.076
+Theta average = 3.025
+Theta line = 1.454
+Rho sum = -595.000
+Rho average = -198.333
+pt1_av = (81,-1016), pt2_av = (313,970)
+Distance average = 197.000
+Centre = 176.000
+Deviation = -21.000 = -5.966 [percent][H[2JLines size = 2
+Theta sum = 6.056
+Theta average = 3.028
+Theta line = 1.457
+Rho sum = -421.000
+Rho average = -210.500
+pt1_av = (96,-1017), pt2_av = (322,970)
+Distance average = 209.000
+Centre = 176.000
+Deviation = -33.000 = -9.375 [percent][H[2JLines size = 1
+Theta sum = 3.002
+Theta average = 3.002
+Theta line = 1.431
+Rho sum = -168.000
+Rho average = -168.000
+pt1_av = (27,-1014), pt2_av = (306,967)
+Distance average = 166.000
+Centre = 176.000
+Deviation = 10.000 = 2.841 [percent][H[2JLines size = 1
+Theta sum = 3.019
+Theta average = 3.019
+Theta line = 1.449
+Rho sum = -205.000
+Rho average = -205.000
+pt1_av = (82,-1018), pt2_av = (325,968)
+Distance average = 203.000
+Centre = 176.000
+Deviation = -27.000 = -7.670 [percent][H[2JLines size = 1
+Theta sum = 2.985
+Theta average = 2.985
+Theta line = 1.414
+Rho sum = -162.000
+Rho average = -162.000
+pt1_av = (4,-1013), pt2_av = (316,962)
+Distance average = 160.000
+Centre = 176.000
+Deviation = 16.000 = 4.545 [percent][H[2JLines size = 1
+Theta sum = 3.002
+Theta average = 3.002
+Theta line = 1.431
+Rho sum = -164.000
+Rho average = -164.000
+pt1_av = (23,-1013), pt2_av = (302,967)
+Distance average = 162.000
+Centre = 176.000
+Deviation = 14.000 = 3.977 [percent][H[2JLines size = 3
+Theta sum = 8.988
+Theta average = 2.996
+Theta line = 1.425
+Rho sum = -513.000
+Rho average = -171.000
+pt1_av = (24,-1014), pt2_av = (314,965)
+Distance average = 169.000
+Centre = 176.000
+Deviation = 7.000 = 1.989 [percent][H[2JLines size = 2
+Theta sum = 6.004
+Theta average = 3.002
+Theta line = 1.431
+Rho sum = -325.000
+Rho average = -162.500
+pt1_av = (22,-1013), pt2_av = (300,968)
+Distance average = 161.000
+Centre = 176.000
+Deviation = 15.000 = 4.261 [percent][H[2JLines size = 4
+Theta sum = 12.060
+Theta average = 3.015
+Theta line = 1.444
+Rho sum = -712.000
+Rho average = -178.000
+pt1_av = (50,-1014), pt2_av = (303,970)
+Distance average = 176.000
+Centre = 176.000
+Deviation = 0.000 = 0.000 [percent][H[2JLines size = 3
+Theta sum = 9.093
+Theta average = 3.031
+Theta line = 1.460
+Rho sum = -531.000
+Rho average = -177.000
+pt1_av = (66,-1013), pt2_av = (286,974)
+Distance average = 176.000
+Centre = 176.000
+Deviation = 0.000 = 0.000 [percent][H[2JLines size = 5
+Theta sum = 15.184
+Theta average = 3.037
+Theta line = 1.466
+Rho sum = -916.000
+Rho average = -183.200
+pt1_av = (78,-1014), pt2_av = (287,975)
+Distance average = 182.000
+Centre = 176.000
+Deviation = -6.000 = -1.705 [percent][H[2JLines size = 4
+Theta sum = 12.130
+Theta average = 3.033
+Theta line = 1.462
+Rho sum = -693.000
+Rho average = -173.250
+pt1_av = (63,-1013), pt2_av = (281,975)
+Distance average = 172.000
+Centre = 176.000
+Deviation = 4.000 = 1.136 [percent][H[2JLines size = 4
+Theta sum = 12.182
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -694.000
+Rho average = -173.500
+pt1_av = (77,-1012), pt2_av = (269,979)
+Distance average = 173.000
+Centre = 176.000
+Deviation = 3.000 = 0.852 [percent][H[2JLines size = 3
+Theta sum = 9.146
+Theta average = 3.049
+Theta line = 1.478
+Rho sum = -523.000
+Rho average = -174.333
+pt1_av = (81,-1012), pt2_av = (267,979)
+Distance average = 174.000
+Centre = 176.000
+Deviation = 2.000 = 0.568 [percent][H[2JLines size = 4
+Theta sum = 12.235
+Theta average = 3.059
+Theta line = 1.488
+Rho sum = -720.000
+Rho average = -180.000
+pt1_av = (97,-1011), pt2_av = (262,982)
+Distance average = 179.000
+Centre = 176.000
+Deviation = -3.000 = -0.852 [percent][H[2JLines size = 4
+Theta sum = 12.252
+Theta average = 3.063
+Theta line = 1.492
+Rho sum = -694.000
+Rho average = -173.500
+pt1_av = (95,-1011), pt2_av = (251,983)
+Distance average = 173.000
+Centre = 176.000
+Deviation = 3.000 = 0.852 [percent][H[2JLines size = 3
+Theta sum = 9.180
+Theta average = 3.060
+Theta line = 1.489
+Rho sum = -529.000
+Rho average = -176.333
+pt1_av = (94,-1011), pt2_av = (257,982)
+Distance average = 175.000
+Centre = 176.000
+Deviation = 1.000 = 0.284 [percent][H[2JLines size = 3
+Theta sum = 9.198
+Theta average = 3.066
+Theta line = 1.495
+Rho sum = -534.000
+Rho average = -178.000
+pt1_av = (102,-1011), pt2_av = (253,984)
+Distance average = 177.000
+Centre = 176.000
+Deviation = -1.000 = -0.284 [percent][H[2JLines size = 5
+Theta sum = 15.359
+Theta average = 3.072
+Theta line = 1.501
+Rho sum = -940.000
+Rho average = -188.000
+pt1_av = (118,-1011), pt2_av = (257,984)
+Distance average = 187.000
+Centre = 176.000
+Deviation = -11.000 = -3.125 [percent][H[2JLines size = 4
+Theta sum = 12.305
+Theta average = 3.076
+Theta line = 1.505
+Rho sum = -758.000
+Rho average = -189.500
+pt1_av = (124,-1010), pt2_av = (254,985)
+Distance average = 189.000
+Centre = 176.000
+Deviation = -13.000 = -3.693 [percent][H[2JLines size = 4
+Theta sum = 12.322
+Theta average = 3.081
+Theta line = 1.510
+Rho sum = -772.000
+Rho average = -193.000
+pt1_av = (132,-1010), pt2_av = (254,986)
+Distance average = 193.000
+Centre = 176.000
+Deviation = -17.000 = -4.830 [percent][H[2JLines size = 4
+Theta sum = 12.322
+Theta average = 3.081
+Theta line = 1.510
+Rho sum = -753.000
+Rho average = -188.250
+pt1_av = (127,-1010), pt2_av = (249,987)
+Distance average = 188.000
+Centre = 176.000
+Deviation = -12.000 = -3.409 [percent][H[2JLines size = 4
+Theta sum = 12.322
+Theta average = 3.081
+Theta line = 1.510
+Rho sum = -754.000
+Rho average = -188.500
+pt1_av = (127,-1010), pt2_av = (249,987)
+Distance average = 188.000
+Centre = 176.000
+Deviation = -12.000 = -3.409 [percent][H[2JLines size = 3
+Theta sum = 9.215
+Theta average = 3.072
+Theta line = 1.501
+Rho sum = -573.000
+Rho average = -191.000
+pt1_av = (121,-1011), pt2_av = (260,984)
+Distance average = 190.000
+Centre = 176.000
+Deviation = -14.000 = -3.977 [percent][H[2JLines size = 4
+Theta sum = 12.322
+Theta average = 3.081
+Theta line = 1.510
+Rho sum = -774.000
+Rho average = -193.500
+pt1_av = (132,-1010), pt2_av = (254,986)
+Distance average = 193.000
+Centre = 176.000
+Deviation = -17.000 = -4.830 [percent][H[2JLines size = 2
+Theta sum = 6.161
+Theta average = 3.081
+Theta line = 1.510
+Rho sum = -404.000
+Rho average = -202.000
+pt1_av = (141,-1010), pt2_av = (263,986)
+Distance average = 202.000
+Centre = 176.000
+Deviation = -26.000 = -7.386 [percent][H[2JLines size = 3
+Theta sum = 9.250
+Theta average = 3.083
+Theta line = 1.513
+Rho sum = -597.000
+Rho average = -199.000
+pt1_av = (141,-1010), pt2_av = (257,987)
+Distance average = 199.000
+Centre = 176.000
+Deviation = -23.000 = -6.534 [percent][H[2JLines size = 3
+Theta sum = 9.250
+Theta average = 3.083
+Theta line = 1.513
+Rho sum = -599.000
+Rho average = -199.667
+pt1_av = (141,-1010), pt2_av = (257,987)
+Distance average = 199.000
+Centre = 176.000
+Deviation = -23.000 = -6.534 [percent][H[2JLines size = 4
+Theta sum = 12.357
+Theta average = 3.089
+Theta line = 1.518
+Rho sum = -814.000
+Rho average = -203.500
+pt1_av = (151,-1009), pt2_av = (256,988)
+Distance average = 203.000
+Centre = 176.000
+Deviation = -27.000 = -7.670 [percent][H[2JLines size = 2
+Theta sum = 6.178
+Theta average = 3.089
+Theta line = 1.518
+Rho sum = -398.000
+Rho average = -199.000
+pt1_av = (146,-1009), pt2_av = (251,988)
+Distance average = 198.000
+Centre = 176.000
+Deviation = -22.000 = -6.250 [percent][H[2JLines size = 3
+Theta sum = 6.196
+Theta average = 2.065
+Theta line = 0.495
+Rho sum = -161.000
+Rho average = -53.667
+pt1_av = (-855,-522), pt2_av = (906,427)
+Distance average = 25.000
+Centre = 176.000
+Deviation = 151.000 = 42.898 [percent][H[2JLines size = 2
+Theta sum = 6.196
+Theta average = 3.098
+Theta line = 1.527
+Rho sum = -407.000
+Rho average = -203.500
+pt1_av = (160,-1008), pt2_av = (247,990)
+Distance average = 203.000
+Centre = 176.000
+Deviation = -27.000 = -7.670 [percent][H[2JLines size = 2
+Theta sum = 3.107
+Theta average = 1.553
+Theta line = -0.017
+Rho sum = 35.000
+Rho average = 17.500
+pt1_av = (-1000,35), pt2_av = (1000,0)
+Distance average = 0.000
+Centre = 176.000
+Deviation = 176.000 = 50.000 [percent][H[2JLines size = 5
+Theta sum = 12.427
+Theta average = 2.485
+Theta line = 0.915
+Rho sum = -616.000
+Rho average = -123.200
+pt1_av = (-513,-867), pt2_av = (708,717)
+Distance average = 97.000
+Centre = 176.000
+Deviation = 79.000 = 22.443 [percent][H[2JLines size = 4
+Theta sum = 6.248
+Theta average = 1.562
+Theta line = -0.009
+Rho sum = 16.000
+Rho average = 4.000
+pt1_av = (-1000,13), pt2_av = (1000,-5)
+Distance average = 0.000
+Centre = 176.000
+Deviation = 176.000 = 50.000 [percent][H[2JLines size = 3
+Theta sum = 3.142
+Theta average = 1.047
+Theta line = -0.524
+Rho sum = 224.000
+Rho average = 74.667
+pt1_av = (-829,565), pt2_av = (903,-435)
+Distance average = 37.000
+Centre = 176.000
+Deviation = 139.000 = 39.489 [percent][H[2JLines size = 5
+Theta sum = 6.266
+Theta average = 1.253
+Theta line = -0.318
+Rho sum = 249.000
+Rho average = 49.800
+pt1_av = (-934,360), pt2_av = (966,-265)
+Distance average = 16.000
+Centre = 176.000
+Deviation = 160.000 = 45.455 [percent][H[2JLines size = 6
+Theta sum = 9.372
+Theta average = 1.562
+Theta line = -0.009
+Rho sum = 15.000
+Rho average = 2.500
+pt1_av = (-1000,11), pt2_av = (1000,-6)
+Distance average = 0.000
+Centre = 176.000
+Deviation = 176.000 = 50.000 [percent][H[2JLines size = 5
+Theta sum = 6.266
+Theta average = 1.253
+Theta line = -0.318
+Rho sum = 250.000
+Rho average = 50.000
+pt1_av = (-934,360), pt2_av = (966,-265)
+Distance average = 16.000
+Centre = 176.000
+Deviation = 160.000 = 45.455 [percent][H[2JLines size = 7
+Theta sum = 9.355
+Theta average = 1.336
+Theta line = -0.234
+Rho sum = 250.000
+Rho average = 35.714
+pt1_av = (-964,267), pt2_av = (981,-197)
+Distance average = 8.000
+Centre = 176.000
+Deviation = 168.000 = 47.727 [percent][H[2JLines size = 6
+Theta sum = 9.372
+Theta average = 1.562
+Theta line = -0.009
+Rho sum = 40.000
+Rho average = 6.667
+pt1_av = (-1000,15), pt2_av = (1000,-2)
+Distance average = 0.000
+Centre = 176.000
+Deviation = 176.000 = 50.000 [percent][H[2JLines size = 5
+Theta sum = 9.355
+Theta average = 1.871
+Theta line = 0.300
+Rho sum = -197.000
+Rho average = -39.400
+pt1_av = (-944,-333), pt2_av = (967,258)
+Distance average = 11.000
+Centre = 176.000
+Deviation = 165.000 = 46.875 [percent][H[2J[H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -443.000
+Rho average = -221.500
+pt1_av = (125,-1017), pt2_av = (316,974)
+Distance average = 220.000
+Centre = 176.000
+Deviation = -44.000 = -12.500 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -668.000
+Rho average = -222.667
+pt1_av = (135,-1016), pt2_av = (309,977)
+Distance average = 222.000
+Centre = 176.000
+Deviation = -46.000 = -13.068 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -668.000
+Rho average = -222.667
+pt1_av = (135,-1016), pt2_av = (309,977)
+Distance average = 222.000
+Centre = 176.000
+Deviation = -46.000 = -13.068 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -668.000
+Rho average = -222.667
+pt1_av = (135,-1016), pt2_av = (309,977)
+Distance average = 222.000
+Centre = 176.000
+Deviation = -46.000 = -13.068 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -669.000
+Rho average = -223.000
+pt1_av = (135,-1016), pt2_av = (309,977)
+Distance average = 222.000
+Centre = 176.000
+Deviation = -46.000 = -13.068 [percent][H[2JLines size = 1
+Theta sum = 3.054
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -222.000
+Rho average = -222.000
+pt1_av = (134,-1016), pt2_av = (308,977)
+Distance average = 221.000
+Centre = 176.000
+Deviation = -45.000 = -12.784 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -666.000
+Rho average = -222.000
+pt1_av = (134,-1016), pt2_av = (308,977)
+Distance average = 221.000
+Centre = 176.000
+Deviation = -45.000 = -12.784 [percent][H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -439.000
+Rho average = -219.500
+pt1_av = (123,-1016), pt2_av = (314,974)
+Distance average = 218.000
+Centre = 176.000
+Deviation = -42.000 = -11.932 [percent][H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -439.000
+Rho average = -219.500
+pt1_av = (123,-1016), pt2_av = (314,974)
+Distance average = 218.000
+Centre = 176.000
+Deviation = -42.000 = -11.932 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -663.000
+Rho average = -221.000
+pt1_av = (133,-1015), pt2_av = (307,977)
+Distance average = 220.000
+Centre = 176.000
+Deviation = -44.000 = -12.500 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -662.000
+Rho average = -220.667
+pt1_av = (133,-1015), pt2_av = (307,977)
+Distance average = 220.000
+Centre = 176.000
+Deviation = -44.000 = -12.500 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -663.000
+Rho average = -221.000
+pt1_av = (133,-1015), pt2_av = (307,977)
+Distance average = 220.000
+Centre = 176.000
+Deviation = -44.000 = -12.500 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -662.000
+Rho average = -220.667
+pt1_av = (133,-1015), pt2_av = (307,977)
+Distance average = 220.000
+Centre = 176.000
+Deviation = -44.000 = -12.500 [percent][H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -438.000
+Rho average = -219.000
+pt1_av = (122,-1016), pt2_av = (314,974)
+Distance average = 218.000
+Centre = 176.000
+Deviation = -42.000 = -11.932 [percent][H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -437.000
+Rho average = -218.500
+pt1_av = (122,-1016), pt2_av = (313,974)
+Distance average = 217.000
+Centre = 176.000
+Deviation = -41.000 = -11.648 [percent][H[2JLines size = 1
+Theta sum = 3.054
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -219.000
+Rho average = -219.000
+pt1_av = (131,-1015), pt2_av = (305,977)
+Distance average = 218.000
+Centre = 176.000
+Deviation = -42.000 = -11.932 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -652.000
+Rho average = -217.333
+pt1_av = (129,-1015), pt2_av = (304,977)
+Distance average = 216.000
+Centre = 176.000
+Deviation = -40.000 = -11.364 [percent][H[2JLines size = 3
+Theta sum = 9.163
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -646.000
+Rho average = -215.333
+pt1_av = (127,-1015), pt2_av = (302,977)
+Distance average = 214.000
+Centre = 176.000
+Deviation = -38.000 = -10.795 [percent][H[2JLines size = 1
+Theta sum = 3.054
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -212.000
+Rho average = -212.000
+pt1_av = (124,-1015), pt2_av = (298,978)
+Distance average = 211.000
+Centre = 176.000
+Deviation = -35.000 = -9.943 [percent][H[2JLines size = 2
+Theta sum = 6.126
+Theta average = 3.063
+Theta line = 1.492
+Rho sum = -425.000
+Rho average = -212.500
+pt1_av = (133,-1014), pt2_av = (290,980)
+Distance average = 211.000
+Centre = 176.000
+Deviation = -35.000 = -9.943 [percent][H[2JLines size = 1
+Theta sum = 3.054
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -205.000
+Rho average = -205.000
+pt1_av = (117,-1014), pt2_av = (291,978)
+Distance average = 204.000
+Centre = 176.000
+Deviation = -28.000 = -7.955 [percent][H[2JLines size = 3
+Theta sum = 9.198
+Theta average = 3.066
+Theta line = 1.495
+Rho sum = -627.000
+Rho average = -209.000
+pt1_av = (133,-1013), pt2_av = (284,981)
+Distance average = 208.000
+Centre = 176.000
+Deviation = -32.000 = -9.091 [percent][H[2JLines size = 2
+Theta sum = 6.126
+Theta average = 3.063
+Theta line = 1.492
+Rho sum = -397.000
+Rho average = -198.500
+pt1_av = (119,-1012), pt2_av = (276,981)
+Distance average = 197.000
+Centre = 176.000
+Deviation = -21.000 = -5.966 [percent][H[2JLines size = 1
+Theta sum = 3.054
+Theta average = 3.054
+Theta line = 1.484
+Rho sum = -189.000
+Rho average = -189.000
+pt1_av = (101,-1013), pt2_av = (275,980)
+Distance average = 188.000
+Centre = 176.000
+Deviation = -12.000 = -3.409 [percent][H[2JLines size = 2
+Theta sum = 6.091
+Theta average = 3.046
+Theta line = 1.475
+Rho sum = -359.000
+Rho average = -179.500
+pt1_av = (83,-1013), pt2_av = (275,978)
+Distance average = 179.000
+Centre = 176.000
+Deviation = -3.000 = -0.852 [percent][H[2J
